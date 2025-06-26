@@ -1,6 +1,6 @@
 <?php
 
-    require_once __DIR__ . './../includes/connection.php';
+    require_once __DIR__ . './../init.php';
 
 
     function sanitizeString($str){
@@ -163,13 +163,13 @@
         
         $nama = $data["nama"] ?? null;
         $noTelp = $data["noTelp"] ?? null;
-        $gender = $data["jk"] ?? null;
-        $dateOfBirth = $data["tglLahir"] ?? null;
+        $gender = $data["gender"] ?? null;
+        $dateOfBirth = $data["dateOfBirth"] ?? null;
 
         //validasi nama
         if(!isRequired($nama)) {
             $error["nama"][] = "Name can't be empty";
-        } elseif(!isValidName($nama)) {
+        } elseif(isValidName($nama)) {
             $error["nama"][] = "Name can only contains letters, ', -";
         }
 
@@ -195,142 +195,7 @@
             $error["date-of-birth"][] = "date of birth can't be empty";
         } elseif(!isValidDate($dateOfBirth)) {
             $error["date-of-birth"][] = "invalid date";
-
         }
-
-        return $error;
-
-    }
-
-    // validasi update user 
-    function updateUserValidation($data, $conn)  {
-        $error = null;
-
-        $email = $data["email"] ?? null;
-        $username = $data["username"] ?? null;
-        $password = $data["password"] ?? null;
-        $user_id = $data["user_id"] ?? null;
-
-        //validasi email 
-        // validasi email
-        if(!isRequired($email)) {
-            $error['email'][] = "Email can't be empty!";
-        } else {
-            if(!isEmailValid($email)){
-                $error['email'][] = "Invalid email format!";
-            } elseif(isEmailTakenByOther($email, $user_id, $conn)) {
-                $error['email'][] = "Email already is use";
-            } 
-        }
-
-        // validasi username
-        if(!isRequired($username)){
-            $error['username'][] = "Username can't be empty!"; 
-        } elseif(!hasMinLength($username, 5)) {
-            $error['username'][] = "Username must have at least 5 characters";
-        } elseif(!hasMaxLength($username, 20)) {
-            $error['username'][] = "username has a maximum of 20 characters";
-        } elseif(isUsernameTakenByOther($username, $user_id, $conn)){
-            $error['username'][] = "username already taken";
-        }
-        
-        // validasi password
-        if(!isRequired($password)){
-            $error['password'][] = "password can't be empty!"; 
-        } elseif(!hasMinLength($password, 8)) {
-            $error['password'][] = "password must have at least 8 characters";
-        } elseif(!hasMaxLength($password, 16)) {
-            $error['password'][] = "password has a maximum of 16 characters";
-        }
-
-        return $error;
-
-       
-    }
-
-    function memberUpdate($data) {
-        $error = null;
-        
-        $nama = $data["nama"] ?? null;
-        $noTelp = $data["noTelp"] ?? null;
-        $gender = $data["jk"] ?? null;
-        $dateOfBirth = $data["tglLahir"] ?? null;
-        $memberId = $data["member_id"] ?? null;
-
-        //validasi nama
-        if(!isRequired($nama)) {
-            $error["nama"][] = "Name can't be empty";
-        } elseif(!isValidName($nama)) {
-            $error["nama"][] = "Name can only contains letters, ', -";
-        }
-
-        //validasi noTelp
-        if(!isRequired($noTelp)) {
-            $error["noTelp"][] = "Phone number can't be empty";
-        } elseif(!hasMinLength($noTelp, 10)) {
-            $error["noTelp"][] = "Phone number at least have 10 chars";
-        } elseif(!hasMaxLength($noTelp, 15)) {
-            $error["noTelp"][] = "Phone number maximal have 15 chars";
-        }
-
-        //validasi gender 
-        if(!isRequired($gender)) {
-            $error["gender"][] = "Gender can't be empty";
-        } elseif(!isValidGender($gender)) {
-            $error["gender"][] = "Invalid gender";
-        }
-        
-        //validasi tanggal lahir
-        
-        if(!isRequired($dateOfBirth)) {
-            $error["date-of-birth"][] = "date of birth can't be empty";
-        } elseif(!isValidDate($dateOfBirth)) {
-            $error["date-of-birth"][] = "invalid date";
-
-        }
-
-        if(!isRequired($memberId)) {
-            $error["member-id"][] = "date of birth can't be empty";
-        } 
-
-        return $error;
-    }
-
-    // validasi input membership plan 
-    function createMembershipPlanValidation($data) {
-        $error = null;
-
-        $nama_paket = $data["nama_paket"] ?? null;
-        $harga_paket = $data["harga_paket"] ?? null;
-        $durasi_hari = $data["durasi_hari"] ?? null;
-        $deskripsi = $data["deskripsi"] ?? null;
-
-        //validasi nama paket
-        if(!isRequired($nama_paket)) {
-            $error["nama_paket"][] = "Nama paket can't be empty";
-        }
-
-        // validasi harga paket
-        if(!isRequired($harga_paket)) { 
-            $error["harga_paket"][] = "Harga paket can't be empty";
-        } elseif(!isNumeric($harga_paket)) {
-            $error["harga_paket"][] = "harga paket only can contain numbers";
-        }
-        
-        // validasi durasi 
-        if(!isRequired($durasi_hari)) { 
-            $error["durasi_hari"][] = "Duration can't be empty";
-        } elseif(!isNumeric($durasi_hari)) {
-            $error["durasi_hari"][] = "Duration only can contain numbers";
-        }
-        
-        // validasi deksripsi
-        if(!isRequired($deskripsi)) { 
-            $error["deskripsi"][] = "Deskripsi can't be empty";
-        }
-
-        return $error;
-
 
     }
 
