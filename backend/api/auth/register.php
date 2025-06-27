@@ -62,6 +62,7 @@
                 $result = createDataUsers($sanitizedData, $conn);
                 if($result){
                     unset($sanitizedData['password']);
+                    $sanitizedData['last_id'] = $result;
                     $response['status'] = 201;
                     $response['message'] = 'Created!';
                     $response['data'] = $sanitizedData;

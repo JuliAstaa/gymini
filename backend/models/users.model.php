@@ -10,10 +10,14 @@
 
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, 'ssss', $email, $username, $password, $role);
+        mysqli_stmt_execute($stmt);
 
-        if(mysqli_stmt_execute($stmt)) {
+        $lastInsertedId = mysqli_insert_id($conn);
+        
+
+        if($lastInsertedId) {
             mysqli_stmt_close($stmt);
-            return true;
+            return $lastInsertedId;
         } else {
             mysqli_stmt_close($stmt);
             return false;
