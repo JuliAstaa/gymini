@@ -124,3 +124,6 @@ API
    "payment_method": "", // Transfer / Cash
    "description": "" // string bisa null
    }
+
+NOTE UNTUK REGISTERASI MEMBER
+setelah registerasi di auth langsung arahkan ke registerasi lanjutan member yang sudah berisi id_user
