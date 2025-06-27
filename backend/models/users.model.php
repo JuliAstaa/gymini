@@ -84,7 +84,7 @@
     }
 
     function findUserByIdentity($identity, $conn) {
-        $query = "SELECT user_id, email, username, role, users_status FROM users WHERE email = ? OR username = ?";
+        $query = "SELECT user_id, email, username, password, role, users_status FROM users WHERE email = ? OR username = ?";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, 'ss', $identity, $identity);
         mysqli_stmt_execute($stmt);

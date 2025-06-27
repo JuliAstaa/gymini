@@ -4,7 +4,7 @@
 
     function auth($identity, $password, $conn) {
         $user = findUserByIdentity($identity, $conn);
-
+        
         if($user && password_verify($password, $user['password'])){
             return $user;
         }

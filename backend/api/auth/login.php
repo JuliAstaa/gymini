@@ -35,9 +35,10 @@
 
             //cek validasi
             $validationError = loginValidation($userData, $conn);
+            var_dump($validationError);
 
             //jika ada validasi yang error
-            if(!$validationError) {
+            if(!empty($validationError)) {
                 http_response_code(400);
                 $response['status'] = 400;
                 $response['message'] = "Bad request";

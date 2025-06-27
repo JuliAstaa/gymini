@@ -53,6 +53,7 @@
                     $sanitizedData['username'] = sanitizeString($userDatatoUpdate['username']);
                     $sanitizedData['password'] = sanitizeString($userDatatoUpdate['password']);
                     $sanitizedData['password'] = password_hash($sanitizedData['password'], PASSWORD_DEFAULT);
+                    $sanitizedData['user_id'] = sanitizeNumber($userDatatoUpdate['user_id']);
                     
 
                     $isUpdated = patchUser($sanitizedData, $conn);
