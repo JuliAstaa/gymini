@@ -85,4 +85,19 @@
         return false;
     }
 
+    function getMembershipPlanPrice($id, $conn) {
+        $query = "SELECT harga_paket FROM membership_plan WHERE plan_id = ?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $price = null;
+        if($result && mysqli_num_rows($result) > 0) {
+            $price = mysqli_fetch_assoc($result);
+        }
+
+        return $price;
+    }
+
 ?>

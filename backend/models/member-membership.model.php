@@ -83,7 +83,7 @@
 
     // fungsi untuk mendapatkan semua data membership
     function getAllMembershipData($conn) {
-        $query = "SELECT * FROM members_memberships";
+        $query = "SELECT * FROM members_memberships ORDER BY id_membership DESC";
 
         $result = mysqli_query($conn, $query);
 
@@ -118,7 +118,7 @@
 
     //fungsi untuk mendapatkan semua data membership berdasarkan id member 
     function getMembershipDataByMemberId($memberId, $conn) {
-        $query = "SELECT * FROM members_memberships WHERE members_id = ?";
+        $query = "SELECT * FROM members_memberships WHERE members_id = ? ORDER BY id_membership DESC";
 
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, "i", $memberId);

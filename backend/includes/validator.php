@@ -361,4 +361,34 @@
 
     }
 
+    //validasi input transaksi
+    function createTransactionValidation($data) {
+        $error = null;
+
+        $members_id = $data['members_id'] ?? null;
+        $plan_id = $data['plan_id'] ?? null;
+        $amount = $data['amount'] ?? null;
+        $payment_method	 = $data['payment_method'] ?? null;
+        $description = $data['description'] ?? null;
+
+        //validasi member id
+        if(!isRequired($members_id)) {
+            $error["member-id"][] = "member id can't be empty";
+        }
+
+        //validasi plan id
+        if(!isRequired($plan_id)) {
+            $error["member-id"][] = "plan id can't be empty";
+        }
+        
+        //validasi payment method 
+        if(!isRequired($payment_method)) {
+            $error["payment_method"][] = "payment method can't be empty";
+        }
+
+        return $error;
+        
+
+    }
+
 ?>
