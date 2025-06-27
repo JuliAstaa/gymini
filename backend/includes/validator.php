@@ -290,7 +290,7 @@
         }
 
         if(!isRequired($memberId)) {
-            $error["member-id"][] = "date of birth can't be empty";
+            $error["member-id"][] = "member id can't be empty";
         } 
 
         return $error;
@@ -331,6 +331,33 @@
 
         return $error;
 
+
+    }
+
+    //validasi input members_membership
+    function createMemberMembershipValidation($data) {
+        $error = null;
+        
+        $members_id = $data['members_id'] ?? null;
+        $plan_id = $data['plan_id'] ?? null;
+        $status_pembayaran = $data['status_pembayaran'] ?? null;
+
+        //validasi member id
+        if(!isRequired($members_id)) {
+            $error["member-id"][] = "member id can't be empty";
+        }
+
+        //validasi plan id
+        if(!isRequired($plan_id)) {
+            $error["member-id"][] = "plan id can't be empty";
+        }
+
+        // validasi status pembayaran
+        if(!isRequired($status_pembayaran)) {
+            $error["member-id"][] = "status pembayaran can't be empty";
+        }
+
+        return $error;
 
     }
 
