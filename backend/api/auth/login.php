@@ -35,7 +35,6 @@
 
             //cek validasi
             $validationError = loginValidation($userData, $conn);
-            var_dump($validationError);
 
             //jika ada validasi yang error
             if(!empty($validationError)) {

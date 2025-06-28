@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMMINI</title>
+    <link rel="stylesheet" href="../../public/css/auth-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="./../../public/img/logo.png" alt="">
+            </div>
+            <h1>PROFILE</h1>
+
+            <form id="registerForm" action="" method="POST">
+                <div class="input-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" required>
+                    <span class="error-message" id="nama-error"></span>
+                </div>
+                <div class="input-group">
+                    <label for="noTelp">Phone Number</label>
+                    <input type="text" id="noTelp" name="noTelp" required>
+                    <span class="error-message" id="noTelp-error"></span>
+                </div>
+                <div class="input-group">
+                    <label for="jk">Gender</label>
+                    <select name="jk" id="jk">
+                        <option value="">--------------</option>
+                        <option value="L">Male</option>
+                        <option value="P">Female</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="tglLahir">Date of Birth</label>
+                    <input type="date" id="tglLahir" name="tglLahir" required>
+                    <span class="error-message" id="tglLahir-error"></span>
+                </div>
+
+                <span class="error-message" id="general-error" style="text-align: center;"></span>
+                
+                <button id="submit" type="submit" class="login-button">SAVE PROFILE</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            const $registerForm = $("#registerForm"); 
+
+            const sessionData = sessionStorage.getItem("registeredUser");
+            const userData = JSON.parse(sessionData)
+
+            console.log(userData.last_id)
+
+
+            $registerForm.submit((e) => { 
+                e.preventDefault();
+
+                const formData = $registerForm.serializeArray(); 
+                
+                const formDataObj = {}
+                
+                formData.forEach(field => {
+                    formDataObj[field.name] = field.value
+                });
+
+                formDataObj.user_id = userData.last_id
+
+                console.log(JSON.stringify(formDataObj))
+
+                
+
+                $.ajax({
+                    url: "http://localhost/gymini/backend/api/member/create-member.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formDataObj),
+                    success: (res) => {
+                        console.log(`success ${res}`);
+                        if(res.status === 201) {
+                          
+                            sessionStorage.setItem("prfile", JSON.stringify(res.data))
+                            window.location.href = "index.php";
+                            alert("Register successfuly")
+                          
+                        }
+                    },
+                    error: (xhr, status, error) => {
+                       console.log(`Error: ${error}`)
+                       console.log(`xhr: ${JSON.parse(xhr.responseText)}`)
+                       console.log(`status: ${status}`)
+
+                       const responseApi = JSON.parse(xhr.responseText)
+
+                       if(responseApi.status === 400) {
+                            if(responseApi.errors.email) {
+                                $("#email-error").text(responseApi.errors.email)
+                            }
+
+                            if(responseApi.errors.username) {
+                                $("#username-error").text(responseApi.errors.username)
+                            }
+                            
+                            if(responseApi.errors.password) {
+                                $("#password-error").text(responseApi.errors.password)
+                            }
+                        
+
+                       }
+                    }
+                })
+
+            });
+        });
+    </script>
+
+</body>
+</html>

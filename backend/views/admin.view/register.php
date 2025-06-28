@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMMINI</title>
+    <link rel="stylesheet" href="../../public/css/auth-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="./../../public/img/logo.png" alt="">
+            </div>
+            <h1>REGISTER</h1>
+
+            <form id="registerForm" action="" method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <span class="error-message" id="username-error"></span>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="error-message" id="password-error"></span>
+                </div>
+
+                <span class="error-message" id="general-error" style="text-align: center;"></span>
+                
+                <button id="register" type="submit" class="login-button">REGISTER</button>
+            </form>
+
+            <p class="login-link">Already hava an accounts? <a href="login.php">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            const $registerForm = $("#registerForm"); 
+
+            $registerForm.submit((e) => { 
+                e.preventDefault();
+
+                const formData = $registerForm.serializeArray(); 
+                
+                const formDataObj = {}
+                
+                formData.forEach(field => {
+                    formDataObj[field.name] = field.value
+                });
+
+                formDataObj.role = "admin"
+
+                console.log(JSON.stringify(formDataObj))
+
+                $.ajax({
+                    url: "http://localhost/gymini/backend/api/auth/register.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formDataObj),
+                    success: (res) => {
+                        console.log(`success ${res}`);
+                        if(res.status === 201) {
+                          
+                            sessionStorage.setItem("registeredUser", JSON.stringify(res.data))
+                            window.location.href = "index.php";
+                            alert("Register successfuly")
+                          
+                        }
+                    },
+                    error: (xhr, status, error) => {
+                       console.log(`Error: ${error}`)
+                       console.log(`xhr: ${JSON.parse(xhr.responseText)}`)
+                       console.log(`status: ${status}`)
+
+                       const responseApi = JSON.parse(xhr.responseText)
+
+                       if(responseApi.status === 400) {
+                            if(responseApi.errors.email) {
+                                $("#email-error").text(responseApi.errors.email)
+                            }
+
+                            if(responseApi.errors.username) {
+                                $("#username-error").text(responseApi.errors.username)
+                            }
+                            
+                            if(responseApi.errors.password) {
+                                $("#password-error").text(responseApi.errors.password)
+                            }
+                        
+
+                       }
+                    }
+                })
+
+            });
+        });
+    </script>
+
+</body>
+</html>
