@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GYMini | Dashboard Member</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/member/style.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="profile-info">
+        <img src="./../assets/logo.png" alt="User Icon" />
+        <span id="greeting">Good Morning,<br />Anjay Mabar</span>
+      </div>
+      <div class="membership-status">Active Class A Membership</div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="welcome-container">
+      <div class="welcome-box horizontal">
+        <div class="logo-side">
+          <img src="./../assets/logo.png" alt="GYMini Logo" />
+        </div>
+        <div class="welcome-text">
+          <h1>Welcome To GYMini</h1>
+          <h2>Anjay Mabar !!</h2>
+        </div>
+      </div>
+
+      <button
+        class="nav-button"
+        onclick="window.location.href='../../index.html'"
+      >
+        <img src="../assets/Transaksilogo.png" alt="Navigation" />
+      </button>
+    </main>
+
+    <!-- BACKGROUND SCRIPT -->
+    <script>
+      const bgImages = ["../Bahan/bg1.jpeg", "../Bahan/bg2.jpeg"];
+
+      let currentIndex = 0;
+      const container = document.querySelector(".welcome-container");
+
+      // Atur background awal
+      container.style.setProperty("--bg-img", `url('${bgImages[0]}')`);
+
+      function changeBackground() {
+        currentIndex = (currentIndex + 1) % bgImages.length;
+        container.style.setProperty(
+          "--bg-img",
+          `url('${bgImages[currentIndex]}')`
+        );
+      }
+
+      setInterval(changeBackground, 5000);
+    </script>
+  </body>
+</html>
