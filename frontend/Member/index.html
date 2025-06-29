@@ -9,15 +9,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../style/member/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <!-- TOP BAR -->
     <header class="topbar">
       <div class="profile-info">
-        <img src="./../assets/logo.png" alt="User Icon" />
-        <span id="greeting">Good Morning,<br />Anjay Mabar</span>
+        <img src="./../assets/logo member.png" alt="User Icon" />
+        <span id="greeting"></span>
       </div>
       <div class="membership-status">Active Class A Membership</div>
+      <div class="logout">
+        <button id="logout">logout</button>
+      </div>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -28,7 +32,7 @@
         </div>
         <div class="welcome-text">
           <h1>Welcome To GYMini</h1>
-          <h2>Anjay Mabar !!</h2>
+          <h2 id="welcome-member-name"></h2>
         </div>
       </div>
 
@@ -42,7 +46,27 @@
 
     <!-- BACKGROUND SCRIPT -->
     <script>
-      const bgImages = ["../Bahan/bg1.jpeg", "../Bahan/bg2.jpeg"];
+      const loggeduser = sessionStorage.getItem("loggedUser");
+      const registerUser = sessionStorage.getItem("profile");
+
+      const dataUser = loggeduser ? loggeduser : registerUser;
+
+      const dataUserObj = JSON.parse(dataUser);
+      console.log(dataUserObj.username);
+
+      $("#greeting").text(`${dataUserObj.username}`);
+      $("#welcome-member-name").text(`${dataUserObj.username}`);
+
+      // logout
+      $("#logout").click(() => {
+        alert("Logout Successfuly");
+        window.location.href = "login.html";
+        sessionStorage.removeItem("loggedUser");
+        sessionStorage.removeItem("profile");
+      });
+
+      // dynamic bg
+      const bgImages = ["../../assets/bg1.jpeg", "../../assets/bg2.jpeg"];
 
       let currentIndex = 0;
       const container = document.querySelector(".welcome-container");

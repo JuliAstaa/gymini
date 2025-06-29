@@ -89,8 +89,8 @@
             success: (res) => {
               console.log(`success ${res}`);
               if (res.status === 201) {
-                sessionStorage.setItem("prfile", JSON.stringify(res.data));
-                window.location.href = "index.html";
+                sessionStorage.setItem("profile", JSON.stringify(res.data));
+                window.location.href = "login.html";
                 alert("Register successfuly");
               }
             },

@@ -2,10 +2,12 @@ PROJECT UAS DENGAN MENGAMBIL SISTEM MANAJEMEN GYM YANG KAMI NAMAI GYMINI
 
 ANGGOTA
 I MADE JULI ASTAWA (2401010239)
-I NENGAH SAITYA SADIPTA (240101023)
-I MADE INDRAWA (240101023)
+I NENGAH SAITYA SADIPTA (2401010234)
+I MADE INDRAWA (2401010237)
 
 CATATAN:
+Untuk versi mysql yang kami gunakan yaitu versi 8.0.30, jika terjadi error saat import kemungkinan besar karena collation pada table penyebab berbedanya collation tersebut karena perbedaan versi mysqli
+
 API
 ==================================AUTH==========================================
 
