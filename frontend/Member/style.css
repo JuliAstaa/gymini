@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #213448;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3e8ed0;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#greeting {
+  color: #000;
+  font-weight: 500;
+}
+
+.profile-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 5px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.membership-status {
+  background: #46d58d;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* MAIN BACKGROUND */
+.welcome-container {
+  position: relative;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.welcome-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+  transition: background-image 1s ease-in-out;
+}
+
+/* WELCOME BOX */
+.welcome-box.horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: #fffde6;
+  border-radius: 30px;
+  padding: 30px 50px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo-side img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+.welcome-text {
+  color: #000;
+}
+
+.welcome-text h1, .welcome-text h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.welcome-text h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.welcome-text h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+/* NAV BUTTON */
+.nav-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #3e8ed0;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .profile-info {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .membership-status {
+    align-self: flex-start;
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .welcome-box.horizontal {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .logo-side img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .welcome-text h1 {
+    font-size: 20px;
+  }
+
+  .welcome-text h2 {
+    font-size: 16px;
+  }
+
+  .nav-button {
+    bottom: 10px;
+    left: 10px;
+    padding: 8px;
+  }
+
+  .nav-button img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text h1 {
+    font-size: 18px;
+  }
+
+  .welcome-text h2 {
+    font-size: 14px;
+  }
+
+  .logo-side img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .topbar {
+    font-size: 14px;
+  }
+}
