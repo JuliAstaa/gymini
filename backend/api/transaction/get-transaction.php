@@ -38,7 +38,6 @@
         // get all data
         } else {
             $allTransaction = getAllTransaction($conn);
-            var_dump($allTransaction);
 
              if($allTransaction) {
                 unset($allTransaction['password']);

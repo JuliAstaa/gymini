@@ -14,9 +14,9 @@
   <body>
     <!-- TOPBAR -->
     <div class="topbar">
-      <div class="left">
+      <div id="home" class="left">
         <img src="../assets/logo member.png" alt="User" />
-        <span>Anjay Mabar</span>
+        <span id="username">Anjay Mabar</span>
       </div>
     </div>
 
@@ -34,14 +34,10 @@
           <tr>
             <th>Member ID</th>
             <th>Transaction ID</th>
-            <th>Cashier ID</th>
             <th>Member Name</th>
-            <th>Membership Status</th>
-            <th>Time of Transaction</th>
-            <th>Package Paid</th>
+            <th>Package Name</th>
             <th>Payment Amount</th>
             <th>Payment Method</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody id="transactionBody"></tbody>
@@ -58,6 +54,12 @@
       const dataMemberObj = JSON.parse(dataMemberJson);
 
       console.log(dataMemberObj);
+
+      $("#username").text(dataMemberObj.username);
+
+      $("#home").click(() => {
+        window.location.href = "index.html";
+      });
 
       function loadTransactions(keyword = "") {
         $.ajax({
@@ -83,6 +85,19 @@
                 !trx.members_id.toLowerCase().includes(keyword.toLowerCase())
               )
                 return;
+
+              if (trx.user_id == dataMemberObj.user_id) {
+                tbody.append(`
+              <tr>
+                <td>${trx.members_id}</td>
+                <td>${trx.id_transaction}</td>
+                <td>${trx.nama_members}</td>
+                <td>${trx.nama_paket}</td>
+                <td>${trx.amount}</td>
+                <td>${trx.payment_method}</td>
+              </tr>
+            `);
+              }
             });
           },
           error: function (err) {
