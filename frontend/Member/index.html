@@ -13,18 +13,19 @@
   </head>
   <body>
     <!-- TOP BAR -->
+     hauiiii
     <header class="topbar">
       <div class="profile-info">
         <img src="./../assets/logo member.png" alt="User Icon" />
         <span id="greeting"></span>
       </div>
       <div class="membership-status">Active Class A Membership</div>
-      <div class="logout">
-        <button id="logout">logout</button>
-      </div>
     </header>
-
-    <!-- MAIN CONTENT -->
+    
+    <!-- MAIN CONTENT -->      
+    <div class="logout">
+      <button id="logout">logout</button>
+    </div>
     <main class="welcome-container">
       <div class="welcome-box horizontal">
         <div class="logo-side">
@@ -35,8 +36,10 @@
           <h2 id="welcome-member-name"></h2>
         </div>
       </div>
-
-      <button id="btn-to-transaction" class="nav-button">
+      <button
+        class="nav-button"
+        onclick="window.location.href='Tampilan_transaksi.html'"
+      >
         <img src="../assets/Transaksilogo.png" alt="Navigation" />
       </button>
     </main>
@@ -60,12 +63,6 @@
         window.location.href = "login.html";
         sessionStorage.removeItem("loggedUser");
         sessionStorage.removeItem("profile");
-      });
-
-      // to transaction
-      $("#btn-to-transaction").click(() => {
-        sessionStorage.setItem("dataMember", JSON.stringify(dataUserObj));
-        window.location.href = "Tampilan_transaksi.html";
       });
 
       // dynamic bg
