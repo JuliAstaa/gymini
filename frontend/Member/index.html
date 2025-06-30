@@ -36,10 +36,7 @@
         </div>
       </div>
 
-      <button
-        class="nav-button"
-        onclick="window.location.href='../../index.html'"
-      >
+      <button id="btn-to-transaction" class="nav-button">
         <img src="../assets/Transaksilogo.png" alt="Navigation" />
       </button>
     </main>
@@ -63,6 +60,12 @@
         window.location.href = "login.html";
         sessionStorage.removeItem("loggedUser");
         sessionStorage.removeItem("profile");
+      });
+
+      // to transaction
+      $("#btn-to-transaction").click(() => {
+        sessionStorage.setItem("dataMember", JSON.stringify(dataUserObj));
+        window.location.href = "Tampilan_transaksi.html";
       });
 
       // dynamic bg

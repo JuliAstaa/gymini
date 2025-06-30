@@ -1,102 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GYMini | Transaction History</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style/member_transaksi/style.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="left">
-      <img src="../assets/logo member.png" alt="User" />
-      <span>Anjay Mabar</span>
-    </div>
-  </div>
-
-  <!-- CONTENT -->
-  <div class="container">
-    <h2>Transaction History</h2>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search Member ID..." />
-      <button onclick="searchTransaction()">🔍</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GYMini | Transaction History</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/member_transaksi/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="left">
+        <img src="../assets/logo member.png" alt="User" />
+        <span>Anjay Mabar</span>
+      </div>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Member ID</th>
-          <th>Transaction ID</th>
-          <th>Cashier ID</th>
-          <th>Member Name</th>
-          <th>Membership Status</th>
-          <th>Time of Transaction</th>
-          <th>Package Paid</th>
-          <th>Payment Amount</th>
-          <th>Payment Method</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="transactionBody"></tbody>
-    </table>
-  </div>
+    <!-- CONTENT -->
+    <div class="container">
+      <h2>Transaction History</h2>
 
-  <!-- SCRIPT AJAX -->
-  <script>
-    $(document).ready(function () {
-      loadTransactions();
-    });
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search Member ID..." />
+        <button onclick="searchTransaction()">🔍</button>
+      </div>
 
-    function loadTransactions(keyword = "") {
-      $.ajax({
-        url: "http://localhost/gymini/backend/api/transaction/get-transaction.php",
-        method: "GET",
-        dataType: "json",
-        success: function (response) {
-          const tbody = $("#transactionBody");
-          tbody.empty();
+      <table>
+        <thead>
+          <tr>
+            <th>Member ID</th>
+            <th>Transaction ID</th>
+            <th>Cashier ID</th>
+            <th>Member Name</th>
+            <th>Membership Status</th>
+            <th>Time of Transaction</th>
+            <th>Package Paid</th>
+            <th>Payment Amount</th>
+            <th>Payment Method</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="transactionBody"></tbody>
+      </table>
+    </div>
 
-          const data = Array.isArray(response) ? response : response.data;
-
-          if (!Array.isArray(data)) {
-            console.error("Format data tidak sesuai");
-            return;
-          }
-
-          data.forEach(trx => {
-            if (keyword && !trx.members_id.toLowerCase().includes(keyword.toLowerCase())) return;
-
-            tbody.append(`
-              <tr>
-                <td>${trx.members_id}</td>
-                <td>${trx.transaction_id}</td>
-                <td>${trx.cashier_id}</td>
-                <td>${trx.member_name}</td>
-                <td>${trx.membership_status}</td>
-                <td>${trx.transaction_time}</td>
-                <td>${trx.package_name}</td>
-                <td>${trx.payment_amount}</td>
-                <td>${trx.payment_method}</td>
-                <td><button onclick="window.print()">Print</button></td>
-              </tr>
-            `);
-          });
-        },
-        error: function (err) {
-          console.error("Gagal ambil data transaksi:", err);
-        }
+    <!-- SCRIPT AJAX -->
+    <script>
+      $(document).ready(function () {
+        loadTransactions();
       });
-    }
 
-    function searchTransaction() {
-      const keyword = $("#searchInput").val().trim();
-      loadTransactions(keyword);
-    }
-  </script>
-</body>
+      const dataMemberJson = sessionStorage.getItem("dataMember");
+      const dataMemberObj = JSON.parse(dataMemberJson);
+
+      console.log(dataMemberObj);
+
+      function loadTransactions(keyword = "") {
+        $.ajax({
+          url: "http://localhost/gymini/backend/api/transaction/get-transaction.php",
+          method: "GET",
+          dataType: "json",
+          success: function (response) {
+            const tbody = $("#transactionBody");
+            tbody.empty();
+
+            const data = Array.isArray(response) ? response : response.data;
+
+            if (!Array.isArray(data)) {
+              console.error("Format data tidak sesuai");
+              return;
+            }
+
+            data.forEach((trx) => {
+              if (
+                keyword &&
+                !trx.members_id.toLowerCase().includes(keyword.toLowerCase())
+              )
+                return;
+            });
+          },
+          error: function (err) {
+            console.error("Gagal ambil data transaksi:", err);
+          },
+        });
+      }
+
+      function searchTransaction() {
+        const keyword = $("#searchInput").val().trim();
+        loadTransactions(keyword);
+      }
+    </script>
+  </body>
 </html>
