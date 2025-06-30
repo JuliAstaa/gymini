@@ -23,6 +23,7 @@
         if($id) {
             $transactionByID = getTransactionById($id, $conn);
             if($transactionByID) {
+                unset($transactionByID['password']);
                 http_response_code(200);
                 $response['status'] = 200;
                 $response['message'] = 'OK';
@@ -37,8 +38,10 @@
         // get all data
         } else {
             $allTransaction = getAllTransaction($conn);
+            var_dump($allTransaction);
 
              if($allTransaction) {
+                unset($allTransaction['password']);
                 http_response_code(200);
                 $response['status'] = 200;
                 $response['message'] = 'OK';

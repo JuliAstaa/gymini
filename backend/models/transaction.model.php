@@ -24,7 +24,7 @@
 
     //get all data transaction 
     function getAllTransaction($conn) {
-        $query = "SELECT * FROM payments INNER JOIN users ON payments.members_id = users.user_id ORDER BY id_transaction DESC";
+        $query = "SELECT id_transaction, payments.members_id, plan_id, amount, payment_method, description, users.user_id FROM payments INNER JOIN members ON payments.members_id = members.members_id INNER JOIN users ON members.user_id = users.user_id ORDER BY id_transaction DESC";
         $result = mysqli_query($conn, $query);
         $transactionData = [];
 
