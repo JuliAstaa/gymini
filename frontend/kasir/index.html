@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gymini | Transaction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/kasir/stayle.css">
+</head>
+<body>
+  <header class="header">
+    <div class="title-section">
+      <h1>Transaction</h1>
+      <p>Kelola Transaksi hari ini?</p>
+    </div>
+    <div class="profile-section">
+      <span>Good Morning<br>Cashier 01</span>
+      <img src="../assets/logo member.png" alt="User Icon" style="width: 50px; height: 40px; border-radius: 50%;">
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="top-bar">
+      <button class="add-btn" onclick="window.location.href='tambah_transaksi.html'">+ add data</button>
+      <input type="text" class="search-box" placeholder="CST001">
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Member ID</th>
+            <th>Transaction ID</th>
+            <th>Member Name</th>
+            <th>Time of Transaction</th>
+            <th>Package Paid</th>
+            <th>Payment Amount</th>
+            <th>Payment Method</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="transaction-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: 'http://localhost/gymini/backend/api/transaction/get-transaction.php',
+        method: 'GET',
+        success: function (response) {
+          const data = response.data;
+
+          if (!Array.isArray(data)) {
+            alert('Gagal mengambil data transaksi: format data tidak sesuai');
+            return;
+          }
+
+          let html = '';
+          data.forEach((item) => {
+            html += `
+              <tr>
+                <td>${item.members_id}</td>
+                <td>${item.id_transaction}</td>
+                <td>${item.nama_members}</td>
+                <td>-</td> <!-- Time of Transaction -->
+                <td>${item.nama_paket}</td>
+                <td>-</td> <!-- Payment Amount -->
+                <td>${item.payment_method}</td>
+                <td><button class="print-btn">Print</button></td>
+              </tr>`;
+          });
+
+          $('#transaction-body').html(html);
+        },
+        error: function () {
+          alert('Gagal mengambil data transaksi: format data tidak sesuai');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
