@@ -53,12 +53,6 @@ body {
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
-.container h2 {
-  text-align: center;
-  color: var(--dark);
-  margin-bottom: 20px;
-}
-
 .search-box {
   text-align: right;
   margin-bottom: 15px;

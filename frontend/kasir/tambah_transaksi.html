@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tambah Transaksi | Gymini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style/kasir/Kasir_add.css" />
+</head>
+<body style="background-color: #213448; font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+  <!-- Header -->
+  <header class="header">
+    <div class="title-section">
+      <h1>Transaction</h1>
+      <p>Kelola Transaksi hari ini?</p>
+    </div>
+    <div class="profile-section">
+      <span>Good Morning<br>Cashier 01</span>
+      <img src="../assets/logo member.png" alt="User Icon" style="width: 50px; height: 40px; border-radius: 50%;">
+    </div>
+  </header>
+
+  <!-- Blue Layer dan Form -->
+  <div class="blue-layer">
+    <div class="form-wrapper">
+      <h2>Tambah Transaksi</h2>
+      <form id="transaction-form">
+        <div class="form-group">
+          <label for="member-id">Member ID</label>
+          <input type="text" id="member-id" placeholder="Masukkan Member ID" />
+        </div>
+
+        <div class="form-group">
+          <label for="member-name">Member Name</label>
+          <input type="text" id="member-name" placeholder="Masukkan Nama Member" />
+        </div>
+
+        <div class="form-group">
+          <label for="package">Package Paid</label>
+          <select id="package"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="payment-method">Payment Method</label>
+          <select id="payment-method">
+            <option value="">-- Pilih Metode Pembayaran --</option>
+            <option value="Transfer">Transfer</option>
+            <option value="Cash">Cash</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="total">Total Payment</label>
+          <input type="text" id="total" disabled />
+        </div>
+
+        <button class="submit-btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Script Transaksi -->
+  <script>
+    $(document).ready(function () {
+      // Ambil data paket dari API
+      $.ajax({
+        url: "http://localhost/gymini/backend/api/membership_plan/get-membership-plan.php",
+        method: "GET",
+        dataType: "json",
+        success: function(response) {
+          const packages = response.data;
+          const dropdown = $('#package');
+          dropdown.empty(); // Kosongkan isi sebelumnya
+
+          // Tambahkan langsung paket-paket ke dropdown
+          packages.forEach(item => {
+            dropdown.append(
+              `<option value="${item.plan_id}" data-harga="${item.harga_paket}">${item.nama_paket}</option>`
+            );
+          });
+        },
+        error: function() {
+          alert("Gagal mengambil data paket dari server");
+        }
+      });
+
+      // Tampilkan harga otomatis saat pilih paket
+      $('#package').on('change', function () {
+        const selected = $(this).find(':selected');
+        const harga = selected.data('harga') || 0;
+        $('#total').val(harga);
+      });
+
+      // Submit form
+      $('#transaction-form').on('submit', function (e) {
+        e.preventDefault();
+
+        const data = {
+          members_id: $('#member-id').val(),
+          plan_id: $('#package').val(),
+          payment_method: $('#payment-method').val(),
+          description: null
+        };
+
+        $.ajax({
+          url: "http://localhost/gymini/backend/api/transaction/create-transaction.php",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(data),
+          success: function () {
+            alert('Transaksi berhasil ditambahkan!');
+            window.location.href = "transaksi.html";
+          },
+          error: function () {
+            alert('Gagal menambahkan transaksi');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
