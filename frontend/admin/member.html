@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/frontend/style/ADMIN/admin-display.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -142,12 +143,17 @@
                             <th
                               style="padding: 10px; border: 2px solid #2e5984"
                             >
-                              Tanggal lahir
+                              Tanggal Daftar
                             </th>
                             <th
                               style="padding: 10px; border: 2px solid #2e5984"
                             >
-                              user_id
+                              Tanggal Lahir
+                            </th>
+                            <th
+                              style="padding: 10px; border: 2px solid #2e5984"
+                            >
+                              User ID
                             </th>
                             <th
                               style="padding: 10px; border: 2px solid #2e5984"
@@ -156,92 +162,10 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr style="background-color: #aac4e0">
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              MEM21
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              ALDYU
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              085921017580
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              L
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              2006/01/29
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              USID21
-                            </td>
-                            <td
-                              style="padding: 10px; border: 2px solid #2e5984"
-                            >
-                              <button
-                                style="
-                                  background-color: #3f91cc;
-                                  color: white;
-                                  border: none;
-                                  padding: 5px 10px;
-                                  margin-right: 5px;
-                                  border-radius: 4px;
-                                  cursor: pointer;
-                                "
-                              >
-                                Edit
-                              </button>
-                              <button
-                                style="
-                                  background-color: #e74c3c;
-                                  color: white;
-                                  border: none;
-                                  padding: 5px 10px;
-                                  border-radius: 4px;
-                                  cursor: pointer;
-                                "
-                              >
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
+                        <tbody id="tbody">
+               
                         </tbody>
                       </table>
-                    </div>
-                    <div
-                      class="button"
-                      style="
-                        width: 100%;
-                        height: fit-content;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                      "
-                    >
-                      <button
-                        style="
-                          width: 200px;
-                          height: 30px;
-                          background-color: green;
-                          border: none;
-                          border-radius: 10px;
-                        "
-                      >
-                        <p>Add Data</p>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -251,5 +175,98 @@
         </div>
       </div>
     </div>
+    <script>
+        $(document).ready(() => {
+          //button to add user
+          $("#addMembers").click(function(){
+            alert("She Phonk")
+
+            window.location.href="memberAdd.html"
+          })
+
+        function loadMember(keyword = "") {
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/member/get-data-member.php",
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+              const tbody = $("#tbody");
+              tbody.empty();
+
+              const data = Array.isArray(response) ? response : response.data;
+
+              if (!Array.isArray(data)) {
+                console.error("Format data tidak sesuai");
+                return;
+              }
+
+              console.log(data);
+
+              data.forEach((member) => {
+                tbody.append(`
+                        <tr style="background-color: #aac4e0">
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.members_id}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.nama_members}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.notelp_members}
+                        </td>
+                       
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.jk_members}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.tgl_daftar}
+                        </td>
+                         <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.tgl_lahir_members}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${member.user_id}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                           <a href="MemberEdit.html?id=${member.user_id}">
+                          <button
+                            style="
+                              background-color: #3f91cc;
+                              color: white;
+                              border: none;
+                              padding: 5px 10px;
+                              margin-right: 5px;
+                              border-radius: 4px;
+                              cursor: pointer;
+                            "
+                          > Edit
+                          </button>
+                        </a>
+                          <button
+                            style="
+                              background-color: red;
+                              color: white;
+                              border: none;
+                              padding: 5px 10px;
+                              margin-right: 5px;
+                              border-radius: 4px;
+                              cursor: pointer;
+                            "
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                                `);
+              });
+            },
+            error: function (err) {
+              console.error("Gagal ambil data transaksi:", err);
+            },
+          });
+        }
+        loadMember();
+      });
+    </script>
   </body>
 </html>
