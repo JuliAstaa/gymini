@@ -1,119 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="MainCont">
-        <div class="SecCont">
-            <!-- Home -->
-            <div class="HomeCont">
-                <!-- Sidebar -->
-                <div class="Sidebar">
-                    <div class="FH">
-                        <div class="logo">
-                        <img src="./../../public/img/logo.png" alt="" style="height: 200px;">
-                    </div>
-                     <div class="menu">
-                        <div class="DashBoard">
-                           <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
-                        </div>
-                        <div class="UserData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-                        </div>
-                        <div class="CashiersData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-                        </div>
-                        <div class="TransREport">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-                        </div>
-                        <div class="Member2">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-                        </div>
-                        <div class="MemPlans">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
-                        </div>
-                    </div>
-                    <div class="SH">
-
-                    </div>
+      <div class="SecCont">
+        <!-- Home -->
+        <div class="HomeCont">
+          <!-- Sidebar -->
+          <div class="Sidebar">
+            <div class="FH">
+              <div class="logo">
+                <img
+                  src="./../../public/img/logo.png"
+                  alt=""
+                  style="height: 200px"
+                />
+              </div>
+              <div class="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
                 </div>
-                <!-- Main Dashboard -->
-                <div class="MainBoard">
-                    <!-- Header -->
-                    <div class="header">
-                        <div class="DashbordDesc" style="padding-left: 30px;">
-                            <p style="font-size: 30px;">MEMBER</p>
-                        </div>
-                        <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
-                            <div class="Name">
-                                <p>Welcome <br> Manager 0076</p>
-                            </div>
-                            <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; align-items: center; justify-content: center; display: flex;">
-                                <p style="color: aliceblue;">O<<</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="MainBoardBody">
-                        <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
-                            <div class="card">
-                                <form action="" id="editTITIT">
-                                    <label>Name</label>
-                                    <input type="text" value="" id="name" >
-
-                                    <label>No Telephone</label>
-                                    <input type="text" id="notelp">
-
-                                    <label>Tanggal Lahir</label>
-                                    <input type="text" id="tLahir">
-
-
-                                    <label>Jenis Kelamin</label>
-                                    <select name="" id="JK" disabled>
-                                        <option value="L">Laki Laki</option>
-                                        <option value="P">Perempuan</option>
-                                    </select>
-                                    <label>Member ID</label>
-                                    <input type="text" id="MemName" disabled>
-
-                                    <button class="edit-btn">Edit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="UserData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>MEMBER</p></a
+                    ></b
+                  >
                 </div>
+                <div class="CashiersData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
+                </div>
+                <div class="TransREport">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              <div class="SH"></div>
             </div>
+            <!-- Main Dashboard -->
+            <div class="MainBoard">
+              <!-- Header -->
+              <div class="header">
+                <div class="DashbordDesc" style="padding-left: 30px">
+                  <p style="font-size: 30px">MEMBER</p>
+                </div>
+                <div
+                  class="Profile"
+                  style="
+                    padding-right: 20px;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    width: 15%;
+                  "
+                >
+                  <div class="Name">
+                    <p>
+                      Welcome <br />
+                      Manager 0076
+                    </p>
+                  </div>
+                  <div
+                    class="ProfilePic"
+                    style="
+                      background-color: black;
+                      height: 50px;
+                      width: 50px;
+                      border-radius: 50px;
+                      align-items: center;
+                      justify-content: center;
+                      display: flex;
+                    "
+                  >
+                    <p style="color: aliceblue">O<<</p>
+                  </div>
+                </div>
+              </div>
+              <div class="MainBoardBody">
+                <div
+                  class="SeccondBoardBody"
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <div class="card">
+                    <form action="" id="editTITIT">
+                      <label>Name</label>
+                      <input type="text" value="" id="name" name="nama" />
+
+                      <label>No Telephone</label>
+                      <input type="text" id="notelp" name="noTelp" />
+
+                      <label>Tanggal Lahir</label>
+                      <input type="text" id="tLahir" name="tglLahir" />
+
+                      <label>Jenis Kelamin</label>
+                      <select name="jk" id="JK" aria-readonly="">
+                        <option value="L">Laki Laki</option>
+                        <option value="P">Perempuan</option>
+                      </select>
+                      <label>Member ID</label>
+                      <input
+                        type="text"
+                        id="MemName"
+                        name="member_id"
+                        readonly
+                      />
+
+                      <button class="edit-btn">Edit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
-        $(document).ready(() => {
-            function LoadDatabyID (){
-                const params = new URLSearchParams(window.location.search);
-                    const id = params.get('id');
-                    console.log(id);// Output: 123
-                
-                $.ajax({
-                    url: `http://localhost/gymini/backend/api/member/get-data-member.php?id=${id}`,
-                    method: "GET",
-                    dataType: "json",
-                    success: function(response) {
-                         const data = Array.isArray(response) ? response : response.data;
-                         console.log(data)
-                        $("#name").val(data.nama_members)
-                        $("#notelp").val(data.notelp_members)
-                        $("#tLahir").val(data.tgl_lahir_members)
-                        $("#JK").val(data.jk_members)
-                        $("#MemName").val(data.members_id) 
-                        
-                    }
-                })
-            }
+      $(document).ready(() => {
+        function LoadDatabyID() {
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get("id");
+          console.log(id); // Output: 123
 
+          $.ajax({
+            url: `http://localhost/gymini/backend/api/member/get-data-member.php?id=${id}`,
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+              const data = Array.isArray(response) ? response : response.data;
+              console.log(data);
+              $("#name").val(data.nama_members);
+              $("#notelp").val(data.notelp_members);
+              $("#tLahir").val(data.tgl_lahir_members);
+              $("#JK").val(data.jk_members);
+              $("#MemName").val(data.members_id);
+            },
+          });
+        }
 
-
-        LoadDatabyID()
+        LoadDatabyID();
 
         const editTITIT = $("#editTITIT");
 
@@ -128,23 +188,17 @@
             formDataObj[field.name] = field.value;
           });
 
-          console.log(formData)
+          console.log(formData);
           console.log(JSON.stringify(formDataObj));
-          return(" ")
           $.ajax({
-            url: "http://localhost/gymini/backend/api/auth/register.php",
-            type: "POST",
+            url: "http://localhost/gymini/backend/api/member/update-member.php",
+            type: "PATCH",
             contentType: "application/json",
             data: JSON.stringify(formDataObj),
             success: (res) => {
-              console.log(`success ${res}`);
-              if (res.status === 201) {
-                sessionStorage.setItem(
-                  "registeredUser",
-                  JSON.stringify(res.data)
-                );
-                window.location.href = "index.php";
-                alert("Register successfuly");
+              if (res.status === 200) {
+                alert("Edit Successfuly");
+                window.location.href = "member.html";
               }
             },
             error: (xhr, status, error) => {
@@ -154,25 +208,11 @@
 
               const responseApi = JSON.parse(xhr.responseText);
 
-              if (responseApi.status === 400) {
-                if (responseApi.errors.email) {
-                  $("#email-error").text(responseApi.errors.email);
-                }
-
-                if (responseApi.errors.username) {
-                  $("#username-error").text(responseApi.errors.username);
-                }
-
-                if (responseApi.errors.password) {
-                  $("#password-error").text(responseApi.errors.password);
-                }
-              }
+              console.log(responseApi.errors);
             },
           });
         });
-        })
-
-        
+      });
     </script>
-</body>
+  </body>
 </html>
