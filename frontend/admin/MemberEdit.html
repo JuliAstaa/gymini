@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -60,30 +61,118 @@
                     <div class="MainBoardBody">
                         <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
                             <div class="card">
+                                <form action="" id="editTITIT">
+                                    <label>Name</label>
+                                    <input type="text" value="" id="name" >
 
-                                <label>Name</label>
-                                <input type="text">
+                                    <label>No Telephone</label>
+                                    <input type="text" id="notelp">
 
-                                <label>No Telephone</label>
-                                <input type="text">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="text" id="tLahir">
 
-                                <label>Tanggal Lahir</label>
-                                <input type="text">
-                               
 
-                                <label>Jenis Kelamin</label>
-                                <select name="" id="">
-                                    <option value="">Laki Laki</option>
-                                    <option value="">Perempuan</option>
-                                </select>
-                                 <label>Member ID</label>
-                                <input type="text">
+                                    <label>Jenis Kelamin</label>
+                                    <select name="" id="JK" disabled>
+                                        <option value="L">Laki Laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                    <label>Member ID</label>
+                                    <input type="text" id="MemName" disabled>
 
-                                <button class="edit-btn">Edit</button>
+                                    <button class="edit-btn">Edit</button>
+                                </form>
                             </div>
+                        </div>
                     </div>
+                </div>
             </div>
-        </div>
-    </div>
+    <script>
+        $(document).ready(() => {
+            function LoadDatabyID (){
+                const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
+                    console.log(id);// Output: 123
+                
+                $.ajax({
+                    url: `http://localhost/gymini/backend/api/member/get-data-member.php?id=${id}`,
+                    method: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                         const data = Array.isArray(response) ? response : response.data;
+                         console.log(data)
+                        $("#name").val(data.nama_members)
+                        $("#notelp").val(data.notelp_members)
+                        $("#tLahir").val(data.tgl_lahir_members)
+                        $("#JK").val(data.jk_members)
+                        $("#MemName").val(data.members_id) 
+                        
+                    }
+                })
+            }
+
+
+
+        LoadDatabyID()
+
+        const editTITIT = $("#editTITIT");
+
+        editTITIT.submit((e) => {
+          e.preventDefault();
+
+          const formData = editTITIT.serializeArray();
+
+          const formDataObj = {};
+
+          formData.forEach((field) => {
+            formDataObj[field.name] = field.value;
+          });
+
+          console.log(formData)
+          console.log(JSON.stringify(formDataObj));
+          return(" ")
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/auth/register.php",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formDataObj),
+            success: (res) => {
+              console.log(`success ${res}`);
+              if (res.status === 201) {
+                sessionStorage.setItem(
+                  "registeredUser",
+                  JSON.stringify(res.data)
+                );
+                window.location.href = "index.php";
+                alert("Register successfuly");
+              }
+            },
+            error: (xhr, status, error) => {
+              console.log(`Error: ${error}`);
+              console.log(`xhr: ${JSON.parse(xhr.responseText)}`);
+              console.log(`status: ${status}`);
+
+              const responseApi = JSON.parse(xhr.responseText);
+
+              if (responseApi.status === 400) {
+                if (responseApi.errors.email) {
+                  $("#email-error").text(responseApi.errors.email);
+                }
+
+                if (responseApi.errors.username) {
+                  $("#username-error").text(responseApi.errors.username);
+                }
+
+                if (responseApi.errors.password) {
+                  $("#password-error").text(responseApi.errors.password);
+                }
+              }
+            },
+          });
+        });
+        })
+
+        
+    </script>
 </body>
 </html>
