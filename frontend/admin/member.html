@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/frontend/style/ADMIN/admin-display.css" />
+    <link rel="stylesheet" href="../style/ADMIN/admin-display.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
   </head>
@@ -17,7 +17,7 @@
             <div class="FH">
               <div class="logo">
                 <img
-                  src="./../../public/img/logo.png"
+                  src="../assets/logo.png"
                   alt=""
                   style="height: 200px"
                 />
@@ -68,12 +68,13 @@
               </div>
               <div class="SH"></div>
             </div>
-            <!-- Main Dashboard -->
+          </div>
+          <!-- Main Dashboard -->
             <div class="MainBoard">
               <!-- Header -->
               <div class="header">
                 <div class="DashbordDesc" style="padding-left: 30px">
-                  <p style="font-size: 30px">MEMBER</p>
+                  <p style="font-size: 30px">Member</p>
                 </div>
                 <div
                   class="Profile"
@@ -163,7 +164,6 @@
                           </tr>
                         </thead>
                         <tbody id="tbody">
-               
                         </tbody>
                       </table>
                     </div>
@@ -178,11 +178,6 @@
     <script>
         $(document).ready(() => {
           //button to add user
-          $("#addMembers").click(function(){
-            alert("She Phonk")
-
-            window.location.href="memberAdd.html"
-          })
 
         function loadMember(keyword = "") {
           $.ajax({
@@ -228,7 +223,7 @@
                           ${member.user_id}
                         </td>
                         <td style="padding: 10px; border: 2px solid #2e5984">
-                           <a href="MemberEdit.html?id=${member.user_id}">
+                           <a href="MemberEdit.html?id=${member.user_id}" style="text-decoration: none;">
                           <button
                             style="
                               background-color: #3f91cc;
@@ -261,7 +256,7 @@
               });
             },
             error: function (err) {
-              console.error("Gagal ambil data transaksi:", err);
+              console.error("Gagal ambil data member:", err);
             },
           });
         }

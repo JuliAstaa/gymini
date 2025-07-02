@@ -1,1 +1,13 @@
 Pergi e 
+
+<tr style="background-color: #aac4e0;">
+    <td style="padding: 10px; border: 2px solid #2e5984;">CST001</td>
+    <td style="padding: 10px; border: 2px solid #2e5984;">Paket bicep meledak</td>
+    <td style="padding: 10px; border: 2px solid #2e5984;">1000</td>
+    <td style="padding: 10px; border: 2px solid #2e5984;">14 Bulan </td>
+    <td style="padding: 10px; border: 2px solid #2e5984;">Paket Bicep Meledak + Coach seumur hidup</td>
+    <td style="padding: 10px; border: 2px solid #2e5984;">
+    <button style="background-color: #3f91cc; color: white; border: none; padding: 5px 10px; margin-right: 5px; border-radius: 4px; cursor: pointer;">Edit</button>
+    <button style="background-color: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Delete</button>
+    </td>
+</tr>

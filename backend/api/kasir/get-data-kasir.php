@@ -40,7 +40,6 @@
         // get all data
         } else {
             $allKasirData = getAllDataKasir($conn);
-            var_dump(($allKasirData));
             if($allKasirData) {
                 unset($allKasirData['password']);
                 http_response_code(200);
