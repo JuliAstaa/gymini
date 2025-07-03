@@ -24,11 +24,18 @@
     <div class="top-bar">
         <div class="logout">
           <button id="logout">logout</button>
+        </div>     
+        <div class="search-box" style="display: flex; width: 25%;">
+          <div class="add">
+            <button id="add" onclick="window.location.href='tambah_transaksi.html'">
+              <i class="fas fa-plus"></i> Add Transaction
+            </button>
+          </div>
+          <div class="SB">
+            <input type="text" id="searchInput" placeholder="Search Member ID..." />
+            <button onclick="searchTransaction()">🔍</button>
+          </div>
         </div>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search Member ID..." />
-        <button onclick="searchTransaction()">🔍</button>
-      </div>
     </div>
 
     <div class="table-container">
