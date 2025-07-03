@@ -82,7 +82,8 @@
           </div>
           <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
             <div class="Name">
-              <p>Welcome <br> Manager 0076</p>
+              <p>Welcome <br>  
+              <span id="username"></span>
             </div>
             <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; align-items: center; justify-content: center; display: flex;">
               <p style="color: aliceblue;">O&lt;&lt;</p>
@@ -126,6 +127,12 @@
 </div> <!-- Close MainCont -->
 <script>
 $(document).ready(() => {
+
+          const dataAdminJson = sessionStorage.getItem("loggedUser");
+          const dataAdminObj = JSON.parse(dataAdminJson);
+
+          $("#username").text(dataAdminObj.username);
+
         //button to add user
         // for some reason it cant fecth the data for cashier, idk why. Imma just fix the displays
         function loadkasir(keyword = "") {
