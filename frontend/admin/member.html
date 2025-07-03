@@ -18,8 +18,8 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu" id="menu">
-                <div class="DashBoard">
+              <div class="menu" >
+                <div class="DashBoard" id="menu">
                   <b
                     ><a href="Home.html" style="text-decoration: none; color: black"
                       ><p>Dashboard</p></a
@@ -62,16 +62,13 @@
                   >
                 </div>
               </div>
-              
             </div>
-            <div class="SH">
-                 <div class="SH">
+             <div class="SH">
                   <div class="menu2">
-                    <div class="LogOut">
-                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    <div id="logout" class="LogOut">
+                      <b>Log Out</b>
                     </div>
                 </div>
-              </div>
               </div>
           </div>
           <!-- Main Dashboard -->
@@ -293,8 +290,14 @@
           window.location.href = "MM.html";
         })
         $("#MemPlans").click(function(){
-          window.location.href = "MM.html";
+          window.location.href = "membership.html";
         })
+
+        $("#logout").click(() => {
+          window.location.href = "login.html";
+          sessionStorage.removeItem("loggedUser")
+        })
+        
       });
     </script>
   </body>

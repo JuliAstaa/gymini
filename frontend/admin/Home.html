@@ -18,59 +18,58 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu" id="menu">
-                <div class="DashBoard">
+              <div class="menu" >
+                <div class="DashBoard" id="menu">
                   <b
                     ><a href="Home.html" style="text-decoration: none; color: black"
                       ><p>Dashboard</p></a
                     ></b
                   >
-              </div>
-              <div class="UserData" id="UserData">
+                </div>
+                <div class="UserData" id="UserData">
                   <b
                     ><a href="member.html" style="text-decoration: none; color: black"
                       ><p>Member</p></a
                     ></b
                   >
-              </div>
-              <div class="CashiersData" id="CashiersData">
+                </div>
+                <div class="CashiersData" id="CashiersData">
                   <b
                     ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Cashier Data</p></a
                     ></b
                   >
-              </div>
-              <div class="TransREport" id="TransREport">
+                </div>
+                <div class="TransREport" id="TransREport">
                   <b
                     ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Transacation Report</p></a
                     ></b
                   >
-              </div>
-              <div class="Member2" id="Member2">
+                </div>
+                <div class="Member2" id="Member2">
                   <b
                     ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Member Membership</p></a
                     ></b
                   >
-              </div>
-              <div class="MemPlans" id="MemPlans">
+                </div>
+                <div class="MemPlans" id="MemPlans">
                   <b
                     ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Membership Plans</p></a
                     ></b
                   >
                 </div>
+              </div>
             </div>
-              
-            </div>
-            <div class="SH">
+             <div class="SH">
                   <div class="menu2">
-                    <div class="LogOut">
-                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    <div id="logout" class="LogOut">
+                      <b>Log Out</b>
                     </div>
                 </div>
-            </div>
+              </div>
             
           </div>
           <!-- Main Dashboard -->
@@ -114,64 +113,9 @@
               </div>
             </div>
             <div class="MainBoardBody">
-              <div class="Content1">
-                <div class="DailyIncome">
-                  <div class="InnerCOntent">
-                    <div class="InnerContentBackround">
-                      <div class="">
-                        <p style="font-size: 20px">Today's Income</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">Rp. 300.000</p>
-                      </div>
-                    </div>
-                  </div>
+                <div class="SecBBody">
+                    <h1>Welcome Anjay</h1>
                 </div>
-                <div class="TodaysTrans">
-                  <div class="InnerCOntent">
-                    <div class="InnerContentBackround">
-                      <div class="">
-                        <p style="font-size: 20px">Transacation Today</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">4</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="Content2">
-                <div class="DailyIncome">
-                  <div class="InnerCOntent">
-                    <div class="InnerContentBackround">
-                      <div class="">
-                        <p style="font-size: 20px">Team</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">Person one</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">Person two</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">Person three</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="TodaysTrans">
-                  <div class="InnerCOntent">
-                    <div class="InnerContentBackround">
-                      <div class="">
-                        <p style="font-size: 20px">Members</p>
-                      </div>
-                      <div class="">
-                        <p style="font-size: 30px">2134</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -201,8 +145,14 @@
           window.location.href = "MM.html";
         })
         $("#MemPlans").click(function(){
-          window.location.href = "MM.html";
+          window.location.href = "membership.html";
         })
+
+        $("#logout").click(() => {
+          window.location.href = "login.html";
+          sessionStorage.removeItem("loggedUser")
+        })
+
       });
     </script>
   </body>
