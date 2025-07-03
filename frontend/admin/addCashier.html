@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -17,52 +18,59 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu">
+              <div class="menu" id="menu">
                 <div class="DashBoard">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Home.html" style="text-decoration: none; color: black"
                       ><p>Dashboard</p></a
                     ></b
                   >
                 </div>
-                <div class="UserData">
+                <div class="UserData" id="UserData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
-                      ><p>MEMBER</p></a
+                    ><a href="member.html" style="text-decoration: none; color: black"
+                      ><p>Member</p></a
                     ></b
                   >
                 </div>
-                <div class="CashiersData">
+                <div class="CashiersData" id="CashiersData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Cashier Data</p></a
                     ></b
                   >
                 </div>
-                <div class="TransREport">
+                <div class="TransREport" id="TransREport">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Transacation Report</p></a
                     ></b
                   >
                 </div>
-                <div class="Member2">
+                <div class="Member2" id="Member2">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Member Membership</p></a
                     ></b
                   >
                 </div>
-                <div class="MemPlans">
+                <div class="MemPlans" id="MemPlans">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Membership Plans</p></a
                     ></b
                   >
                 </div>
               </div>
-              <div class="SH"></div>
+              
             </div>
+            <div class="SH">
+                  <div class="menu2">
+                    <div class="LogOut">
+                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    </div>
+                </div>
+              </div>
           </div>
           <!-- Close Sidebar -->
 
@@ -115,16 +123,19 @@
                 "
               >
                 <div class="card">
-                  <label>Name</label>
-                  <input type="text" />
+                  <form action="" id="addCashier">
 
-                  <label>Gmail</label>
-                  <input type="email" />
+                    <label >Username</label>
+                    <input type="text" id="name" name="username"/>
 
-                  <label>Role</label>
-                  <input type="text" />
+                    <label>Gmail</label>
+                    <input type="email" id="email" name="email" />
 
-                  <button class="edit-btn">Add</button>
+                    <label >Password</label>
+                    <input type="text" id="pw" name="password" />
+
+                    <button class="edit-btn">Add</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -136,5 +147,84 @@
       <!-- Close SecCont -->
     </div>
     <!-- Close MainCont -->
+     <script>
+        $(document).ready(() => {
+        const $addCashier = $("#addCashier");
+
+        $addCashier.submit((e) => {
+          e.preventDefault();
+
+          const formData = $addCashier.serializeArray();
+
+          const formDataObj = {};
+
+          formData.forEach((field) => {
+            formDataObj[field.name] = field.value;
+          });
+
+          formDataObj.role = "admin";
+
+          console.log(JSON.stringify(formDataObj));
+
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/auth/register.php",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formDataObj),
+            success: (res) => {
+              console.log(`success ${res}`);
+              if (res.status === 201) {
+                sessionStorage.setItem(
+                  "registeredCashier",
+                  JSON.stringify(res.data)
+                );
+                window.location.href = "Cashier.html";
+                alert("Data Added Successfully")
+              }
+            },
+            error: (xhr, status, error) => {
+              console.log(`Error: ${error}`);
+              console.log(`xhr: ${JSON.parse(xhr.responseText)}`);
+              console.log(`status: ${status}`);
+
+              const responseApi = JSON.parse(xhr.responseText);
+
+              if (responseApi.status === 400) {
+                if (responseApi.errors.email) {
+                  $("#email-error").text(responseApi.errors.email);
+                }
+
+                if (responseApi.errors.username) {
+                  $("#username-error").text(responseApi.errors.username);
+                }
+
+                if (responseApi.errors.password) {
+                  $("#password-error").text(responseApi.errors.password);
+                }
+              }
+            },
+          });
+        });
+
+        $("#menu").click(function(){
+          window.location.href = "home.html";
+        })
+        $("#UserData").click(function(){
+          window.location.href = "member.html";
+        })
+        $("#CashiersData").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#TransREport").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#Member2").click(function(){
+          window.location.href = "MM.html";
+        })
+        $("#MemPlans").click(function(){
+          window.location.href = "MM.html";
+        })
+      });
+     </script>
   </body>
 </html>

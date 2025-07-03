@@ -100,7 +100,7 @@
     }
 
     function getAllDataKasir($conn) {
-        $query = "SELECT user_id, email, username, role, users_status FROM users WHERE users.role = 'kasir'";
+        $query = "SELECT user_id, email, username, role, users_status FROM users WHERE users.role = 'kasir' AND users_status = 1";
         $result = mysqli_query($conn, $query);
 
         $data_kasir = [];
@@ -133,8 +133,8 @@
 
         $email = $data["email"] ?? null;
         $username = $data["username"] ?? null;
-        $password = $data["password]"] ?? null;
-        $user_id = $data["user_id]"] ?? null;
+        $password = $data["password"] ?? null;
+        $user_id = $data["user_id"] ?? null;
 
         $query = "UPDATE users SET users.email = ?,
                                    users.username = ?,

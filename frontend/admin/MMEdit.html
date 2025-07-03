@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -14,31 +15,64 @@
       <!-- Sidebar -->
       <div class="Sidebar">
         <div class="FH">
-          <div class="logo">
-            <img src="../assets/logo.png" alt="" style="height: 200px;">
+              <div class="logo">
+                <img src="../assets/logo.png" alt="" style="height: 200px" />
+              </div>
+              <div class="menu" id="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="Home.html" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
+                </div>
+                <div class="UserData" id="UserData">
+                  <b
+                    ><a href="member.html" style="text-decoration: none; color: black"
+                      ><p>Member</p></a
+                    ></b
+                  >
+                </div>
+                <div class="CashiersData" id="CashiersData">
+                  <b
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
+                </div>
+                <div class="TransREport" id="TransREport">
+                  <b
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2" id="Member2">
+                  <b
+                    ><a href="MM.html" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans" id="MemPlans">
+                  <b
+                    ><a href="MM.html" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              
+            </div>
+        <div class="SH">
+             <div class="SH">
+                  <div class="menu2">
+                    <div class="LogOut">
+                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    </div>
+                </div>
+              </div>
           </div>
-          <div class="menu">
-            <div class="DashBoard">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
-            </div>
-            <div class="UserData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-            </div>
-            <div class="CashiersData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-            </div>
-            <div class="TransREport">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-            </div>
-            <div class="Member2">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-            </div>
-            <div class="MemPlans">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
-            </div>
-          </div>
-          <div class="SH"></div>
-        </div>
       </div> <!-- Close Sidebar -->
 
       <!-- Main Dashboard -->
@@ -61,19 +95,23 @@
         <div class="MainBoardBody">
           <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
             <div class="card">
-              <label>ID Member</label>
-              <input type="text" disabled>
+              <form action="" id="editTITIT" name="editTITIT">
+                <label>ID Plan</label>
+                <input type="text" id="id_membership" readonly name="id_memberships"/>
 
-              <label>ID Plan</label>
-              <input type="text" disabled>
 
-              <label>Status</label>
-              <select name="status" id="status">
-                <option value="Lunas">Lunas</option>
-                <option value="Tidak Lunas">Tidak Lunas</option>
-              </select>
+                <label>ID Member</label>
+                <input type="text" id="members_id" name="members_id" />
 
-              <button class="edit-btn">Edit</button>
+                <label>Status</label>
+                <select name="status_pembayaran" id="status_pembayaran">
+
+                  <option value="Lunas">Lunas</option>
+                  <option value="Tidak Lunas">Tidak Lunas</option>
+                </select>
+
+                <button class="edit-btn">Edit</button>
+              </form>
             </div>
           </div>
         </div>
@@ -81,6 +119,88 @@
     </div> <!-- Close HomeCont -->
   </div> <!-- Close SecCont -->
 </div> <!-- Close MainCont -->
+<script>
+   $(document).ready(() => {
+        function LoadDatabyID() {
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get("id");
+          console.log(id); // Output: 123
 
+          $.ajax({
+            url: `http://localhost/gymini/backend/api/member_membership/get-membership-data.php?id=${id}`,
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+              const data = Array.isArray(response) ? response : response.data;
+              console.log(data);
+              $("#plan_id").val(data.plan_id);
+              $("#members_id").val(data.members_id);
+              $("#status_pembayaran").val(data.status_pembayaran);
+              $("#id_membership").val(data.id_membership);
+            },
+          });
+        }
+
+        LoadDatabyID();
+
+        const editTITIT = $("#editTITIT");
+
+        editTITIT.submit((e) => {
+          e.preventDefault();
+
+          const formData = editTITIT.serializeArray();
+
+          const formDataObj = {};
+
+          formData.forEach((field) => {
+            formDataObj[field.name] = field.value;
+          });
+
+          console.log(formData);
+          console.log(JSON.stringify(formDataObj));
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/member_membership/update-status-pembayaran.php",
+            type: "PATCH",
+            contentType: "application/json",
+            data: JSON.stringify(formDataObj),
+            success: (res) => {
+              if (res.status === 200) {
+                alert("Edit Successfull");
+                window.location.href = "MM.html";
+              }
+            },
+            error: (xhr, status, error) => {
+              console.log(`Error: ${error}`);
+              console.log(`xhr: ${JSON.parse(xhr.responseText)}`);
+              console.log(`status: ${status}`);
+
+              const responseApi = JSON.parse(xhr.responseText);
+
+              console.log(responseApi.errors);
+            },
+          });
+        });
+      
+       $("#menu").click(function(){
+          window.location.href = "home.html";
+        })
+        $("#UserData").click(function(){
+          window.location.href = "member.html";
+        })
+        $("#CashiersData").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#TransREport").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#Member2").click(function(){
+          window.location.href = "MM.html";
+        })
+        $("#MemPlans").click(function(){
+          window.location.href = "MM.html";
+        })  
+      
+      });
+</script>
 </body>
 </html>
