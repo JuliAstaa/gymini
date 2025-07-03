@@ -37,14 +37,6 @@ body {
   object-fit: cover;
 }
 
-.membership-status {
-  background: #46d58d;
-  padding: 5px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
 /* MAIN BACKGROUND */
 .welcome-container {
   position: relative;
@@ -201,8 +193,7 @@ body {
 }
 
 .logout {
-  position: absolute;
-  top: 70px; /* sedikit di bawah topbar (yang tingginya sekitar 60px) */
+  top: 100px;
   right: 20px;
   z-index: 10;
 }
