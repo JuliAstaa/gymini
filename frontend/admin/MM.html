@@ -94,7 +94,7 @@
                 "
               >
                 <div class="Name">
-                  <p>Welcome <br />Manager 0076</p>
+                  <p>Welcome </p>  <span id="username"></span>
                 </div>
                 <div
                   class="ProfilePic"
@@ -188,6 +188,10 @@
 
     <script>
       $(document).ready(() => {
+          const dataAdminJson = sessionStorage.getItem("loggedUser");
+          const dataAdminObj = JSON.parse(dataAdminJson);
+
+          $("#username").text(dataAdminObj.username);
         function loadMemberMembership(keyword = "") {
           $.ajax({
             url: "http://localhost/gymini/backend/api/member_membership/get-membership-data.php",

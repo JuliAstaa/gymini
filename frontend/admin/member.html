@@ -94,7 +94,7 @@
                 <div class="Name">
                   <p>
                     Welcome <br />
-                    Manager 0076
+                    <span id="username"></span>
                   </p>
                 </div>
                 <div
@@ -164,6 +164,12 @@
     </div>
     <script>
       $(document).ready(() => {
+
+          const dataAdminJson = sessionStorage.getItem("loggedUser");
+          const dataAdminObj = JSON.parse(dataAdminJson);
+
+          $("#username").text(dataAdminObj.username);
+
         //button to add user
 
         function loadMember(keyword = "") {

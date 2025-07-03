@@ -96,7 +96,7 @@
                 <div class="Name">
                   <p>
                     Welcome <br />
-                    Manager 0076
+                     <span id="username"></span>
                   </p>
                 </div>
                 <div
@@ -186,6 +186,12 @@
 
     <script>
       $(document).ready(() => {
+
+          const dataAdminJson = sessionStorage.getItem("loggedUser");
+          const dataAdminObj = JSON.parse(dataAdminJson);
+
+          $("#username").text(dataAdminObj.username);
+
         //button to add user
         // for some reason it cant fecth the data for cashier, idk why. Imma just fix the displays
         function loadkasir(keyword = "") {
