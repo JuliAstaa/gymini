@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -61,8 +62,17 @@
                   >
                 </div>
               </div>
-              <div class="SH"></div>
+              
             </div>
+            <div class="SH">
+                 <div class="SH">
+                  <div class="menu2">
+                    <div class="LogOut">
+                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    </div>
+                </div>
+              </div>
+              </div>
           </div>
 
           <!-- Main Dashboard -->
@@ -114,20 +124,22 @@
                   align-items: center;
                 "
               >
-                <div class="card">
+                <form action="" id="addMemberships" name="addMemberships">
+                  <div class="card">
                   <label>Name</label>
-                  <input type="text" />
+                  <input type="text" name="nama_paket" />
 
                   <label>Harga</label>
-                  <input type="text" />
+                  <input type="text" name="harga_paket" />
 
-                  <label>Durasi</label>
-                  <input type="text" />
+                  <label>Durasi (hari)</label>
+                  <input type="text" name="durasi_hari" />
 
                   <label>Deskripsi</label>
-                  <input type="text" />
+                  <input type="text" name="deskripsi" />
 
                   <button class="edit-btn">Add</button>
+                </form>
                 </div>
               </div>
             </div>
@@ -139,5 +151,65 @@
       <!-- Close SecCont -->
     </div>
     <!-- Close MainCont -->
+     <script>
+        $(document).ready(() => {
+        const $addMemberships = $("#addMemberships");
+
+        $addMemberships.submit((e) => {
+          e.preventDefault();
+
+          const formData = $addMemberships.serializeArray();
+
+          const formDataObj = {};
+
+          formData.forEach((field) => {
+            formDataObj[field.name] = field.value;
+          });
+
+          formDataObj.role = "admin";
+
+          console.log(JSON.stringify(formDataObj));
+
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/membership_plan/create-membership-plan.php",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formDataObj),
+            success: (res) => {
+              console.log(`success ${res}`);
+              if (res.status === 201) {
+                sessionStorage.setItem(
+                  "addMemebrships",
+                  JSON.stringify(res.data)
+                );
+                window.location.href = "membership.html";
+                alert("Data Added SuccessFully");
+              }
+            },
+            error: (xhr, status, error) => {
+              console.log(`Error: ${error}`);
+              console.log(`xhr: ${JSON.parse(xhr.responseText)}`);
+              console.log(`status: ${status}`);
+
+              const responseApi = JSON.parse(xhr.responseText);
+
+              if (responseApi.status === 400) {
+                if (responseApi.errors.email) {
+                  $("#email-error").text(responseApi.errors.email);
+                }
+
+                if (responseApi.errors.username) {
+                  $("#username-error").text(responseApi.errors.username);
+                }
+
+                if (responseApi.errors.password) {
+                  $("#password-error").text(responseApi.errors.password);
+                }
+              }
+            },
+          });
+        });
+      });
+     </script>
   </body>
 </html>

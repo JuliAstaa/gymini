@@ -62,8 +62,17 @@
                   >
                 </div>
               </div>
-              <div class="SH"></div>
+              
             </div>
+            <div class="SH">
+                 <div class="SH">
+                  <div class="menu2">
+                    <div class="LogOut">
+                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    </div>
+                </div>
+              </div>
+              </div>
           </div>
           <!-- CLOSE Sidebar -->
 
@@ -160,7 +169,7 @@
                         background-color: green;
                         border: none;
                         border-radius: 10px;
-                      "
+                      " id="addData"
                     >
                       <p>Add Data</p>
                     </button>
@@ -226,7 +235,9 @@
                           ${membership.status_pembayaran}
                         </td>
                         <td style="padding: 10px; border: 2px solid #2e5984">
+                          <a href="MMEdit.html?id=${membership.id_membership}" style="text-decoration: none;">
                           <button
+                          
                             style="
                               background-color: #3f91cc;
                               color: white;
@@ -250,6 +261,11 @@
           });
         }
         loadMemberMembership();
+
+        $("#addData").click(function () {
+          window.location.href = "../admin/MMadd.html";
+        });
+        
       });
     </script>
   </body>

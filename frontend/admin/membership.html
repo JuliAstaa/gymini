@@ -62,8 +62,17 @@
                   >
                 </div>
               </div>
-              <div class="SH"></div>
+              
             </div>
+            <div class="SH">
+                 <div class="SH">
+                  <div class="menu2">
+                    <div class="LogOut">
+                      <b><a href="" style="text-decoration: none; color: black"><p>Log Out</p></a></b>
+                    </div>
+                </div>
+              </div>
+              </div>
           </div>
           <!-- Close Sidebar -->
 
@@ -159,9 +168,9 @@
                         background-color: green;
                         border: none;
                         border-radius: 10px;
-                      "
+                      " id="addData"
                     >
-                      <p>Add Data</p>
+                      Add Data
                     </button>
                   </div>
                 </div>
@@ -256,6 +265,10 @@
           });
         }
         loadMembership();
+
+        $("#addData").click(function () {
+          window.location.href = "../admin/addCashier.html";
+        });
       });
     </script>
   </body>
