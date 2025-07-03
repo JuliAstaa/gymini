@@ -15,7 +15,7 @@
       <p>Kelola Transaksi hari ini?</p>
     </div>
     <div class="profile-section">
-      <span>Good Morning<br>Cashier 01</span>
+      <span id="kasirName"></span>
       <img src="../assets/logo member.png" alt="User Icon" style="width: 50px; height: 40px; border-radius: 50%;">
     </div>
   </header>
@@ -54,6 +54,11 @@
           <input type="text" id="total" disabled />
         </div>
 
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Masukkan description" />
+        </div>
+
         <button class="submit-btn" type="submit">Submit</button>
       </form>
     </div>
@@ -65,6 +70,17 @@
   <!-- Script Transaksi -->
   <script>
     $(document).ready(function () {
+
+    const kasirData = sessionStorage.getItem("loggedKasir");
+
+      if (kasirData) {
+        const kasirObj = JSON.parse(kasirData);
+        $('#kasirName').text(kasirObj.username);
+      } else {
+        window.location.href = "login.html";
+      }
+
+      console.log("Kasir Data:", kasirData);
       // Ambil data paket dari API
       $.ajax({
         url: "http://localhost/gymini/backend/api/membership_plan/get-membership-plan.php",
@@ -112,7 +128,7 @@
           data: JSON.stringify(data),
           success: function () {
             alert('Transaksi berhasil ditambahkan!');
-            window.location.href = "transaksi.html";
+            window.location.href = "index.html";
           },
           error: function () {
             alert('Gagal menambahkan transaksi');

@@ -1,111 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GYMMINI</title>
-    <link rel="stylesheet" href="../../public/css/auth-css.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  </head>
-  <body>
-    <div class="login-container">
-      <div class="login-box">
-        <div class="logo">
-          <img src="./../../public/img/logo.png" alt="" />
-        </div>
-        <h1>LOGIN</h1>
 
-        <form id="loginForm" action="" method="POST">
-          <div class="input-group">
-            <label for="identity">Email or Username</label>
-            <input type="text" id="identity" name="identity" required />
-            <span class="error-message" id="identity-error"></span>
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-            <span class="error-message" id="password-error"></span>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GYMMINI</title>
+  <link rel="stylesheet" href="../style/kasir/logi.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
 
-          <span
-            class="error-message"
-            id="general-error"
-            style="text-align: center"
-          ></span>
-
-          <button id="login" type="submit" class="login-button">LOGIN</button>
-        </form>
-
-        <p class="register-link">
-          Don't have any accounts? <a href="register.html">Register here</a>
-        </p>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="GYMini Logo" />
       </div>
+      <h1>LOGIN</h1>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="identity">Email or Username</label>
+          <input type="text" id="identity" name="identity" required />
+          <span class="error-message" id="identity-error"></span>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <span class="error-message" id="password-error"></span>
+        </div>
+
+        <span class="error-message" id="general-error" style="text-align: center"></span>
+
+        <button id="login" type="submit" class="login-button">LOGIN</button>
+      </form>
+
+      <p class="register-link">
+        Don't have any accounts? <a href="register.html">Register here</a>
+      </p>
     </div>
+  </div>
 
-    <script>
-      $(document).ready(() => {
-        const $loginForm = $("#loginForm");
+  <script>
+    $(document).ready(() => {
+      const $loginForm = $("#loginForm");
 
-        $loginForm.submit((e) => {
-          e.preventDefault();
+      $loginForm.submit((e) => {
+        e.preventDefault();
 
-          const formData = $loginForm.serializeArray();
+        const formData = $loginForm.serializeArray();
+        const formDataObj = {};
+        formData.forEach((field) => {
+          formDataObj[field.name] = field.value;
+        });
 
-          const formDataObj = {};
+        // Reset error messages
+        $("#identity-error").text("");
+        $("#password-error").text("");
+        $("#general-error").text("");
 
-          formData.forEach((field) => {
-            formDataObj[field.name] = field.value;
-          });
+        $.ajax({
+          url: "http://localhost/gymini/backend/api/auth/login.php",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(formDataObj),
+          success: (res) => {
+            console.log("LOGIN SUCCESS", res);
 
-          $.ajax({
-            url: "http://localhost/gymini/backend/api/auth/login.php",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(formDataObj),
-            success: (res) => {
-              console.log(`success ${res}`);
-              if (res.status === 200) {
-                if (res.data.role === "kasir") {
-                  sessionStorage.setItem(
-                    "loggedUser",
-                    JSON.stringify(res.data)
-                  );
-                  window.location.href = "index.html";
-                  alert("login successfuly");
-                } else {
-                  alert("Invalid Role");
-                }
-              }
-            },
-            error: (xhr, status, error) => {
-              console.log(`Error: ${error}`);
-              console.log(`xhr: ${JSON.parse(xhr.responseText)}`);
-              console.log(`status: ${status}`);
+            if (res.status === 200 && res.data.role === "kasir") {
+              const user = res.data;
 
+              // Simpan info user ke session dan localStorage
+              sessionStorage.setItem("loggedKasir", JSON.stringify(user));
+              localStorage.setItem("kasir_id", user.user_id);
+              localStorage.setItem("kasir_username", user.username);
+
+              // Redirect ke halaman dashboard kasir
+              window.location.href = "index.html";
+            } else {
+              alert("Akses hanya diperbolehkan untuk kasir.");
+            }
+          },
+          error: (xhr) => {
+            try {
               const responseApi = JSON.parse(xhr.responseText);
 
               if (responseApi.status === 400) {
                 if (responseApi.errors.password) {
                   $("#password-error").text(responseApi.errors.password);
                 }
-
                 if (responseApi.errors.identity) {
                   $("#identity-error").text(responseApi.errors.identity);
                 }
               }
 
               if (responseApi.status === 404) {
-                $("#identity-error").text("Username or Password incorrect");
-                $("#password-error").text("Username or Password incorrect");
+                $("#identity-error").text("Username atau Password salah");
+                $("#password-error").text("Username atau Password salah");
               }
-            },
-          });
+            } catch (err) {
+              console.error("Server tidak merespons / tidak valid JSON.");
+              $("#general-error").text("Gagal terhubung ke server. Cek koneksi atau CORS.");
+            }
+          },
         });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
