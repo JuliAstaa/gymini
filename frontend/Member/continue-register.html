@@ -61,7 +61,7 @@
       $(document).ready(() => {
         const $registerForm = $("#registerForm");
 
-        const sessionData = sessionStorage.getItem("registeredUser");
+        const sessionData = sessionStorage.getItem("loggedUser");
         const userData = JSON.parse(sessionData);
 
         console.log(userData.last_id);
