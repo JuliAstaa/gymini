@@ -18,45 +18,45 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu">
+              <div class="menu" id="menu">
                 <div class="DashBoard">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Home.html" style="text-decoration: none; color: black"
                       ><p>Dashboard</p></a
                     ></b
                   >
                 </div>
-                <div class="UserData">
+                <div class="UserData" id="UserData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
-                      ><p>MEMBER</p></a
+                    ><a href="member.html" style="text-decoration: none; color: black"
+                      ><p>Member</p></a
                     ></b
                   >
                 </div>
-                <div class="CashiersData">
+                <div class="CashiersData" id="CashiersData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Cashier Data</p></a
                     ></b
                   >
                 </div>
-                <div class="TransREport">
+                <div class="TransREport" id="TransREport">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Transacation Report</p></a
                     ></b
                   >
                 </div>
-                <div class="Member2">
+                <div class="Member2" id="Member2">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Member Membership</p></a
                     ></b
                   >
                 </div>
-                <div class="MemPlans">
+                <div class="MemPlans" id="MemPlans">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Membership Plans</p></a
                     ></b
                   >
@@ -250,7 +250,7 @@
                               margin-right: 5px;
                               border-radius: 4px;
                               cursor: pointer;
-                            "
+                            " data-id="${membership.plan_id}" class="delete-btn"
                           >
                             Delete
                           </button>
@@ -267,8 +267,49 @@
         loadMembership();
 
         $("#addData").click(function () {
-          window.location.href = "../admin/addCashier.html";
+          window.location.href = "../admin/membershipAdd.html";
         });
+
+        function deletemember(id) {
+            $.ajax({
+              url: `http://localhost/gymini/backend/api/membership_plan/delete-membership-plan.php?id=${id}`,
+              type: "DELETE", // or "POST" if your API doesn't support DELETE
+              success: function (response) {
+                console.log("Deleted:", response);
+                alert("Membership data deleted successfully!");
+                loadMember(); // Reload table data
+              },
+              error: function (xhr, status, error) {
+                console.error("Delete failed:", error);
+                alert("Failed to delete cashier.");
+              }
+            });
+        }
+
+        $(document).on("click", "button[data-id]", function () {
+          const id = $(this).data("id"); // Grab cashier ID
+            if (confirm("Are you sure you want to delete this member?")) {
+          deletemember(id);
+          }
+        });
+         $("#menu").click(function(){
+          window.location.href = "home.html";
+        })
+        $("#UserData").click(function(){
+          window.location.href = "member.html";
+        })
+        $("#CashiersData").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#TransREport").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#Member2").click(function(){
+          window.location.href = "MM.html";
+        })
+        $("#MemPlans").click(function(){
+          window.location.href = "MM.html";
+        })
       });
     </script>
   </body>

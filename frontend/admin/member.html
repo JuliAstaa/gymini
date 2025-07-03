@@ -18,45 +18,45 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu">
+              <div class="menu" id="menu">
                 <div class="DashBoard">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Home.html" style="text-decoration: none; color: black"
                       ><p>Dashboard</p></a
                     ></b
                   >
                 </div>
-                <div class="UserData">
+                <div class="UserData" id="UserData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
-                      ><p>MEMBER</p></a
+                    ><a href="member.html" style="text-decoration: none; color: black"
+                      ><p>Member</p></a
                     ></b
                   >
                 </div>
-                <div class="CashiersData">
+                <div class="CashiersData" id="CashiersData">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Cashier Data</p></a
                     ></b
                   >
                 </div>
-                <div class="TransREport">
+                <div class="TransREport" id="TransREport">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
                       ><p>Transacation Report</p></a
                     ></b
                   >
                 </div>
-                <div class="Member2">
+                <div class="Member2" id="Member2">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Member Membership</p></a
                     ></b
                   >
                 </div>
-                <div class="MemPlans">
+                <div class="MemPlans" id="MemPlans">
                   <b
-                    ><a href="" style="text-decoration: none; color: black"
+                    ><a href="MM.html" style="text-decoration: none; color: black"
                       ><p>Membership Plans</p></a
                     ></b
                   >
@@ -210,7 +210,7 @@
                           ${member.user_id}
                         </td>
                         <td style="padding: 10px; border: 2px solid #2e5984">
-                           <a href="MemberEdit.html?id=${member.user_id}" style="text-decoration: none;">
+                           <a href="MemberEdit.html?id=${member.members_id}" style="text-decoration: none;">
                           <button
                             style="
                               background-color: #3f91cc;
@@ -271,6 +271,24 @@
           deletemember(id);
           }
         });
+         $("#menu").click(function(){
+          window.location.href = "home.html";
+        })
+        $("#UserData").click(function(){
+          window.location.href = "member.html";
+        })
+        $("#CashiersData").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#TransREport").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#Member2").click(function(){
+          window.location.href = "MM.html";
+        })
+        $("#MemPlans").click(function(){
+          window.location.href = "MM.html";
+        })
       });
     </script>
   </body>

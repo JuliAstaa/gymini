@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/ADMIN/admin-display.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -14,33 +15,55 @@
       <!-- Sidebar -->
       <div class="Sidebar">
         <div class="FH">
-          <div class="logo">
-            <img src="../assets/logo.png" alt="" style="height: 200px;">
-          </div>
-          <div class="menu">
-            <div class="DashBoard">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
+              <div class="logo">
+                <img src="../assets/logo.png" alt="" style="height: 200px" />
+              </div>
+              <div class="menu" id="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="Home.html" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
+                </div>
+                <div class="UserData" id="UserData">
+                  <b
+                    ><a href="member.html" style="text-decoration: none; color: black"
+                      ><p>Member</p></a
+                    ></b
+                  >
+                </div>
+                <div class="CashiersData" id="CashiersData">
+                  <b
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
+                </div>
+                <div class="TransREport" id="TransREport">
+                  <b
+                    ><a href="Cashier.html" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2" id="Member2">
+                  <b
+                    ><a href="MM.html" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans" id="MemPlans">
+                  <b
+                    ><a href="MM.html" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              
             </div>
-            <div class="UserData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-            </div>
-            <div class="CashiersData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-            </div>
-            <div class="TransREport">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-            </div>
-            <div class="Member2">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-            </div>
-            <div class="MemPlans">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
-            </div>
-          </div>
-          <div class="SH">
-             
-          </div>
-        </div>
         <div class="SH">
                   <div class="menu2">
                     <div class="LogOut">
@@ -80,12 +103,9 @@
                       <th style="padding: 10px; border: 2px solid #2e5984;">Description</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tbody">
                     <tr style="background-color: #aac4e0;">
-                      <td style="padding: 10px; border: 2px solid #2e5984;">MEME123</td>
-                      <td style="padding: 10px; border: 2px solid #2e5984;">PLN123</td>
-                      <td style="padding: 10px; border: 2px solid #2e5984;">Cash</td>
-                      <td style="padding: 10px; border: 2px solid #2e5984;">Ini Desc</td>
+    
                     </tr>
                   </tbody>
                 </table>
@@ -104,6 +124,80 @@
     </div> <!-- Close HomeCont -->
   </div> <!-- Close SecCont -->
 </div> <!-- Close MainCont -->
+<script>
+$(document).ready(() => {
+        //button to add user
+        // for some reason it cant fecth the data for cashier, idk why. Imma just fix the displays
+        function loadkasir(keyword = "") {
+          $.ajax({
+            url: "http://localhost/gymini/backend/api/transaction/get-transaction.php",
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+              const tbody = $("#tbody");
+              tbody.empty();
 
+              const data = Array.isArray(response) ? response : response.data;
+
+              if (!Array.isArray(data)) {
+                console.error("Format data tidak sesuai");
+                return;
+              }
+
+              console.log(data);
+
+              data.forEach((transaction) => {
+                tbody.append(`
+                        <tr style="background-color: #aac4e0">
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${transaction.members_id}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${transaction.plan_id}
+                        </td>
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${transaction.payment_method}
+                        </td>
+                       
+                        <td style="padding: 10px; border: 2px solid #2e5984">
+                          ${transaction.description}
+                        </td>
+                      
+                      </tr>
+                                `);
+              });
+            },
+            error: function (err) {
+              console.error("Gagal ambil data transaksi:", err);
+            },
+          });
+        }
+        loadkasir();
+
+
+
+       
+       $("#menu").click(function(){
+          window.location.href = "home.html";
+        })
+        $("#UserData").click(function(){
+          window.location.href = "member.html";
+        })
+        $("#CashiersData").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#TransREport").click(function(){
+          window.location.href = "Cashier.html";
+        })
+        $("#Member2").click(function(){
+          window.location.href = "MM.html";
+        })
+        $("#MemPlans").click(function(){
+          window.location.href = "MM.html";
+        })
+
+
+      });
+</script>
 </body>
 </html>
