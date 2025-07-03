@@ -1,97 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/ADMIN/admin-display.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/ADMIN/admin-display.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-</head>
-<body>
-<div class="MainCont">
-    <div class="SecCont">
+  </head>
+  <body>
+    <div class="MainCont">
+      <div class="SecCont">
         <!-- Home -->
         <div class="HomeCont">
-            <!-- Sidebar -->
-            <div class="Sidebar">
-                <div class="FH">
-                    <div class="logo">
-                        <img src="../assets/logo.png" alt="" style="height: 200px;">
-                    </div>
-                    <div class="menu">
-                        <div class="DashBoard">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
-                        </div>
-                        <div class="UserData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-                        </div>
-                        <div class="CashiersData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-                        </div>
-                        <div class="TransREport">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-                        </div>
-                        <div class="Member2">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-                        </div>
-                        <div class="MemPlans">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
-                        </div>
-                    </div>
-                    <div class="SH"></div>
+          <!-- Sidebar -->
+          <div class="Sidebar">
+            <div class="FH">
+              <div class="logo">
+                <img src="../assets/logo.png" alt="" style="height: 200px" />
+              </div>
+              <div class="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
                 </div>
-            </div> <!-- Close Sidebar -->
+                <div class="UserData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>MEMBER</p></a
+                    ></b
+                  >
+                </div>
+                <div class="CashiersData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
+                </div>
+                <div class="TransREport">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              <div class="SH"></div>
+            </div>
+          </div>
+          <!-- Close Sidebar -->
 
-            <!-- Main Dashboard -->
-            <div class="MainBoard">
-                <!-- Header -->
-                <div class="header">
-                    <div class="DashbordDesc" style="padding-left: 30px;">
-                        <p style="font-size: 30px;">Membership Plans</p>
-                    </div>
-                    <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
-                        <div class="Name">
-                            <p>Welcome <br> Manager 0076</p>
-                        </div>
-                        <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; align-items: center; justify-content: center; display: flex;">
-                            <p style="color: aliceblue;">O&lt;&lt;</p>
-                        </div>
-                    </div>
+          <!-- Main Dashboard -->
+          <div class="MainBoard">
+            <!-- Header -->
+            <div class="header">
+              <div class="DashbordDesc" style="padding-left: 30px">
+                <p style="font-size: 30px">Membership Plans</p>
+              </div>
+              <div
+                class="Profile"
+                style="
+                  padding-right: 20px;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                  width: 15%;
+                "
+              >
+                <div class="Name">
+                  <p>
+                    Welcome <br />
+                    Manager 0076
+                  </p>
                 </div>
-                <div class="MainBoardBody">
-                    <div class="SeccondBoardBody">
-                        <div class="TableAndInput" style="width: 100%; height: 100%;">
-                            <div class="table">
-                                <table style="border-collapse: collapse; width: 100%; text-align: center;">
-                                    <thead>
-                                        <tr style="background-color: #3f729b; color: white;">
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">ID Paket</th>
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">Nama Paket</th>
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">Harga</th>
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">Durasi (hari)</th>
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">Deskripsi</th>
-                                            <th style="padding: 10px; border: 2px solid #2e5984;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tBodi">
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="button" style="width: 100%; height: fit-content; display: flex; justify-content: center; align-items: center;">
-                                <button style="width: 200px; height: 30px; background-color: green; border: none; border-radius: 10px;"><p>Add Data</p></button>
-                            </div>
-                        </div>
-                    </div>
+                <div
+                  class="ProfilePic"
+                  style="
+                    background-color: black;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                  "
+                >
+                  <p style="color: aliceblue">O&lt;&lt;</p>
                 </div>
-            </div> <!-- Close MainBoard -->
-        </div> <!-- Close HomeCont -->
-    </div> <!-- Close SecCont -->
-</div> <!-- Close MainCont -->
-
+              </div>
+            </div>
+            <div class="MainBoardBody">
+              <div class="SeccondBoardBody">
+                <div class="TableAndInput" style="width: 100%; height: 100%">
+                  <div class="table">
+                    <table
+                      style="
+                        border-collapse: collapse;
+                        width: 100%;
+                        text-align: center;
+                      "
+                    >
+                      <thead>
+                        <tr style="background-color: #3f729b; color: white">
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            ID Paket
+                          </th>
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            Nama Paket
+                          </th>
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            Harga
+                          </th>
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            Durasi (hari)
+                          </th>
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            Deskripsi
+                          </th>
+                          <th style="padding: 10px; border: 2px solid #2e5984">
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="tBodi"></tbody>
+                    </table>
+                  </div>
+                  <div
+                    class="button"
+                    style="
+                      width: 100%;
+                      height: fit-content;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                  >
+                    <button
+                      style="
+                        width: 200px;
+                        height: 30px;
+                        background-color: green;
+                        border: none;
+                        border-radius: 10px;
+                      "
+                    >
+                      <p>Add Data</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Close MainBoard -->
+        </div>
+        <!-- Close HomeCont -->
+      </div>
+      <!-- Close SecCont -->
+    </div>
+    <!-- Close MainCont -->
 
     <script>
-         $(document).ready(() => {
-          //button to add user
+      $(document).ready(() => {
+        //button to add user
 
         function loadMembership(keyword = "") {
           $.ajax({
@@ -128,7 +215,7 @@
                           ${membership.durasi_hari}
                         </td>
                         <td style="padding: 10px; border: 2px solid #2e5984">
-                          ${membership .deskripsi}
+                          ${membership.deskripsi}
                         </td>
                         <td style="padding: 10px; border: 2px solid #2e5984">
                            <a href="MembershipEdit.html?id=${membership.plan_id}" style="text-decoration: none;">
@@ -171,5 +258,5 @@
         loadMembership();
       });
     </script>
-</body>
+  </body>
 </html>

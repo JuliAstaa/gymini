@@ -1,94 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-</head>
-<body>
-<div class="MainCont">
-    <div class="SecCont">
+  </head>
+  <body>
+    <div class="MainCont">
+      <div class="SecCont">
         <!-- Home -->
         <div class="HomeCont">
-            <!-- Sidebar -->
-            <div class="Sidebar">
-                <div class="FH">
-                    <div class="logo">
-                        <img src="../assets/logo.png" alt="" style="height: 200px;">
-                    </div>
-                    <div class="menu">
-                        <div class="DashBoard">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
-                        </div>
-                        <div class="UserData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-                        </div>
-                        <div class="CashiersData">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-                        </div>
-                        <div class="TransREport">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-                        </div>
-                        <div class="Member2">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-                        </div>
-                        <div class="MemPlans">
-                            <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
-                        </div>
-                    </div>
-                    <div class="SH"></div>
+          <!-- Sidebar -->
+          <div class="Sidebar">
+            <div class="FH">
+              <div class="logo">
+                <img src="../assets/logo.png" alt="" style="height: 200px" />
+              </div>
+              <div class="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
                 </div>
-            </div> <!-- Close Sidebar -->
-
-            <!-- Main Dashboard -->
-            <div class="MainBoard">
-                <!-- Header -->
-                <div class="header">
-                    <div class="DashbordDesc" style="padding-left: 30px;">
-                        <p style="font-size: 30px;">Edit Membership Plans</p>
-                    </div>
-                    <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
-                        <div class="Name">
-                            <p>Welcome <br> Manager 0076</p>
-                        </div>
-                        <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; align-items: center; justify-content: center; display: flex;">
-                            <p style="color: aliceblue;">O&lt;&lt;</p>
-                        </div>
-                    </div>
+                <div class="UserData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>MEMBER</p></a
+                    ></b
+                  >
                 </div>
-                <div class="MainBoardBody">
-                    <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
-                        <div class="card">
-                            <form action="" id="editTITIT">
-                                <label>Plan ID</label>
-                                <input type="text" readonly id="plan_id" name="plan_id">
-
-                                <label>Name</label>
-                                <input type="text" id="nama_paket" name="nama_paket">
-
-                                <label>Harga</label>
-                                <input type="text" id="harga_paket" name="harga_paket">
-
-                                <label>Durasi (hari)</label>
-                                <input type="text" id="durasi_hari" name="durasi_hari">
-
-                                <label>Deskripsi</label>
-                                <input type="text" name="deskripsi" id="deskripsi">
-
-                                <button class="edit-btn">Edit</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="CashiersData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
                 </div>
-            </div> <!-- Close MainBoard -->
-        </div> <!-- Close HomeCont -->
-    </div> <!-- Close SecCont -->
-</div> <!-- Close MainCont -->
+                <div class="TransREport">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              <div class="SH"></div>
+            </div>
+          </div>
+          <!-- Close Sidebar -->
+
+          <!-- Main Dashboard -->
+          <div class="MainBoard">
+            <!-- Header -->
+            <div class="header">
+              <div class="DashbordDesc" style="padding-left: 30px">
+                <p style="font-size: 30px">Edit Membership Plans</p>
+              </div>
+              <div
+                class="Profile"
+                style="
+                  padding-right: 20px;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                  width: 15%;
+                "
+              >
+                <div class="Name">
+                  <p>
+                    Welcome <br />
+                    Manager 0076
+                  </p>
+                </div>
+                <div
+                  class="ProfilePic"
+                  style="
+                    background-color: black;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                  "
+                >
+                  <p style="color: aliceblue">O&lt;&lt;</p>
+                </div>
+              </div>
+            </div>
+            <div class="MainBoardBody">
+              <div
+                class="SeccondBoardBody"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <div class="card">
+                  <form action="" id="editTITIT">
+                    <label>Plan ID</label>
+                    <input type="text" readonly id="plan_id" name="plan_id" />
+
+                    <label>Name</label>
+                    <input type="text" id="nama_paket" name="nama_paket" />
+
+                    <label>Harga</label>
+                    <input type="text" id="harga_paket" name="harga_paket" />
+
+                    <label>Durasi (hari)</label>
+                    <input type="text" id="durasi_hari" name="durasi_hari" />
+
+                    <label>Deskripsi</label>
+                    <input type="text" name="deskripsi" id="deskripsi" />
+
+                    <button class="edit-btn">Edit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Close MainBoard -->
+        </div>
+        <!-- Close HomeCont -->
+      </div>
+      <!-- Close SecCont -->
+    </div>
+    <!-- Close MainCont -->
 
     <script>
-       $(document).ready(() => {
+      $(document).ready(() => {
         function LoadDatabyID() {
           const params = new URLSearchParams(window.location.search);
           const id = params.get("id");
@@ -106,7 +165,6 @@
               $("#harga_paket").val(data.harga_paket);
               $("#durasi_hari").val(data.durasi_hari);
               $("#deskripsi").val(data.deskripsi);
-              
             },
           });
         }
@@ -151,7 +209,6 @@
           });
         });
       });
-
     </script>
-</body>
+  </body>
 </html>

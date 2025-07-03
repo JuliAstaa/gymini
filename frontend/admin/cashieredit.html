@@ -1,81 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="MainCont">
-  <div class="SecCont">
-    <!-- Home -->
-    <div class="HomeCont">
-      <!-- Sidebar -->
-      <div class="Sidebar">
-        <div class="FH">
-          <div class="logo">
-            <img src="../assets/logo.png" alt="" style="height: 200px;" />
+      <div class="SecCont">
+        <!-- Home -->
+        <div class="HomeCont">
+          <!-- Sidebar -->
+          <div class="Sidebar">
+            <div class="FH">
+              <div class="logo">
+                <img src="../assets/logo.png" alt="" style="height: 200px" />
+              </div>
+              <div class="menu">
+                <div class="DashBoard">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Dashboard</p></a
+                    ></b
+                  >
+                </div>
+                <div class="UserData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>MEMBER</p></a
+                    ></b
+                  >
+                </div>
+                <div class="CashiersData">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Cashier Data</p></a
+                    ></b
+                  >
+                </div>
+                <div class="TransREport">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Transacation Report</p></a
+                    ></b
+                  >
+                </div>
+                <div class="Member2">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Member Membership</p></a
+                    ></b
+                  >
+                </div>
+                <div class="MemPlans">
+                  <b
+                    ><a href="" style="text-decoration: none; color: black"
+                      ><p>Membership Plans</p></a
+                    ></b
+                  >
+                </div>
+              </div>
+              <div class="SH"></div>
+            </div>
           </div>
-          <div class="menu">
-            <div class="DashBoard">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Dashboard</p></a></b>
+
+          <!-- Main Dashboard -->
+          <div class="MainBoard">
+            <div class="header">
+              <div class="DashbordDesc" style="padding-left: 30px">
+                <p style="font-size: 30px">Edit Cashier</p>
+              </div>
+              <div
+                class="Profile"
+                style="
+                  padding-right: 20px;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                  width: 15%;
+                "
+              >
+                <div class="Name">
+                  <p>
+                    Welcome <br />
+                    Manager 0076
+                  </p>
+                </div>
+                <div
+                  class="ProfilePic"
+                  style="
+                    background-color: black;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                  "
+                >
+                  <p style="color: aliceblue">O&lt;&lt;</p>
+                </div>
+              </div>
             </div>
-            <div class="UserData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>MEMBER</p></a></b>
-            </div>
-            <div class="CashiersData">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Cashier Data</p></a></b>
-            </div>
-            <div class="TransREport">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Transacation Report</p></a></b>
-            </div>
-            <div class="Member2">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Member Membership</p></a></b>
-            </div>
-            <div class="MemPlans">
-              <b><a href="" style="text-decoration: none; color: black;"><p>Membership Plans</p></a></b>
+            <div class="MainBoardBody">
+              <div
+                class="SeccondBoardBody"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <div class="card">
+                  <label>Name</label>
+                  <input type="text" />
+
+                  <label>Gmail</label>
+                  <input type="email" />
+
+                  <label>Role</label>
+                  <input type="text" />
+
+                  <button class="edit-btn">Edit</button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="SH"></div>
+          <!-- Close MainBoard -->
         </div>
+        <!-- Close HomeCont -->
       </div>
-
-      <!-- Main Dashboard -->
-      <div class="MainBoard">
-        <div class="header">
-          <div class="DashbordDesc" style="padding-left: 30px;">
-            <p style="font-size: 30px;">Edit Cashier</p>
-          </div>
-          <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
-            <div class="Name">
-              <p>Welcome <br> Manager 0076</p>
-            </div>
-            <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; align-items: center; justify-content: center; display: flex;">
-              <p style="color: aliceblue;">O&lt;&lt;</p>
-            </div>
-          </div>
-        </div>
-        <div class="MainBoardBody">
-          <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
-            <div class="card">
-              <label>Name</label>
-              <input type="text" />
-
-              <label>Gmail</label>
-              <input type="email" />
-
-              <label>Role</label>
-              <input type="text" />
-
-              <button class="edit-btn">Edit</button>
-            </div>
-          </div>
-        </div>
-      </div> <!-- Close MainBoard -->
-    </div> <!-- Close HomeCont -->
-  </div> <!-- Close SecCont -->
-</div> <!-- Close MainCont -->
-
-</body>
+      <!-- Close SecCont -->
+    </div>
+    <!-- Close MainCont -->
+  </body>
 </html>
