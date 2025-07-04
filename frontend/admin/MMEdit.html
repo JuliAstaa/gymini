@@ -1,123 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/ADMIN/adduser.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/ADMIN/adduser.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="MainCont">
-  <div class="SecCont">
-    <!-- Home -->
-    <div class="HomeCont">
-      <!-- Sidebar -->
-      <div class="Sidebar">
-        <div class="FH">
+      <div class="SecCont">
+        <!-- Home -->
+        <div class="HomeCont">
+          <!-- Sidebar -->
+          <div class="Sidebar">
+            <div class="FH">
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu" >
+              <div class="menu">
                 <div class="DashBoard" id="menu">
-                  <b
-                    ><a href="Home.html" style="text-decoration: none; color: black"
-                      ><p>Dashboard</p></a
-                    ></b
-                  >
+                  <b>Dashboard</b>
                 </div>
                 <div class="UserData" id="UserData">
-                  <b
-                    ><a href="member.html" style="text-decoration: none; color: black"
-                      ><p>Member</p></a
-                    ></b
-                  >
+                  <b>Member</b>
                 </div>
                 <div class="CashiersData" id="CashiersData">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Cashier Data</p></a
-                    ></b
-                  >
+                  <b>Cashier Data</b>
                 </div>
                 <div class="TransREport" id="TransREport">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Transacation Report</p></a
-                    ></b
-                  >
+                  <b>Transacation Report</b>
                 </div>
                 <div class="Member2" id="Member2">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Member Membership</p></a
-                    ></b
-                  >
+                  <b>Member Membership</b>
                 </div>
                 <div class="MemPlans" id="MemPlans">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Membership Plans</p></a
-                    ></b
-                  >
+                  <b>Membership Plans</b>
                 </div>
               </div>
             </div>
-         <div class="SH">
-                  <div class="menu2">
-                    <div id="logout" class="LogOut">
-                      <b>Log Out</b>
-                    </div>
+            <div class="SH">
+              <div class="menu2">
+                <div id="logout" class="LogOut">
+                  <b>Log Out</b>
                 </div>
               </div>
-      </div> <!-- Close Sidebar -->
+            </div>
+          </div>
+          <!-- Close Sidebar -->
 
-      <!-- Main Dashboard -->
-      <div class="MainBoard">
-        <!-- Header -->
-        <div class="header">
-          <div class="DashbordDesc" style="padding-left: 30px;">
-            <p style="font-size: 30px;">Edit Member Membership</p>
-          </div>
-          <div class="Profile" style="padding-right: 20px; display: flex; justify-content: space-evenly; align-items: center; width: 15%;">
-            <div class="Name">
-              <p>Welcome <br> Manager 0076</p>
+          <!-- Main Dashboard -->
+          <div class="MainBoard">
+            <!-- Header -->
+            <div class="header">
+              <div class="DashbordDesc" style="padding-left: 30px">
+                <p style="font-size: 30px">Edit Member Membership</p>
+              </div>
+              <div
+                class="Profile"
+                style="
+                  padding-right: 20px;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                  width: 15%;
+                "
+              >
+                <div class="Name">
+                  <p>
+                    Welcome <br />
+                    Manager 0076
+                  </p>
+                </div>
+                <div
+                  class="ProfilePic"
+                  style="
+                    background-color: black;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <p style="color: aliceblue">O&lt;&lt;</p>
+                </div>
+              </div>
             </div>
-            <div class="ProfilePic" style="background-color: black; height: 50px; width: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center;">
-              <p style="color: aliceblue;">O&lt;&lt;</p>
+
+            <div class="MainBoardBody">
+              <div
+                class="SeccondBoardBody"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <div class="card">
+                  <form action="" id="editTITIT" name="editTITIT">
+                    <label>ID Plan</label>
+                    <input
+                      type="text"
+                      id="id_membership"
+                      readonly
+                      name="id_memberships"
+                    />
+
+                    <label>ID Member</label>
+                    <input type="text" id="members_id" name="members_id" />
+
+                    <label>Status</label>
+                    <select name="status_pembayaran" id="status_pembayaran">
+                      <option value="Lunas">Lunas</option>
+                      <option value="Tidak Lunas">Tidak Lunas</option>
+                    </select>
+
+                    <button class="edit-btn">Edit</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- Close MainBoard -->
         </div>
-
-        <div class="MainBoardBody">
-          <div class="SeccondBoardBody" style="display: flex; justify-content: center; align-items: center;">
-            <div class="card">
-              <form action="" id="editTITIT" name="editTITIT">
-                <label>ID Plan</label>
-                <input type="text" id="id_membership" readonly name="id_memberships"/>
-
-
-                <label>ID Member</label>
-                <input type="text" id="members_id" name="members_id" />
-
-                <label>Status</label>
-                <select name="status_pembayaran" id="status_pembayaran">
-
-                  <option value="Lunas">Lunas</option>
-                  <option value="Tidak Lunas">Tidak Lunas</option>
-                </select>
-
-                <button class="edit-btn">Edit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div> <!-- Close MainBoard -->
-    </div> <!-- Close HomeCont -->
-  </div> <!-- Close SecCont -->
-</div> <!-- Close MainCont -->
-<script>
-   $(document).ready(() => {
+        <!-- Close HomeCont -->
+      </div>
+      <!-- Close SecCont -->
+    </div>
+    <!-- Close MainCont -->
+    <script>
+      $(document).ready(() => {
         function LoadDatabyID() {
           const params = new URLSearchParams(window.location.search);
           const id = params.get("id");
@@ -177,32 +191,31 @@
             },
           });
         });
-      
-       $("#menu").click(function(){
+
+        $("#menu").click(function () {
           window.location.href = "home.html";
-        })
-        $("#UserData").click(function(){
+        });
+        $("#UserData").click(function () {
           window.location.href = "member.html";
-        })
-        $("#CashiersData").click(function(){
+        });
+        $("#CashiersData").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#TransREport").click(function(){
+        });
+        $("#TransREport").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#Member2").click(function(){
+        });
+        $("#Member2").click(function () {
           window.location.href = "MM.html";
-        })
-        $("#MemPlans").click(function(){
+        });
+        $("#MemPlans").click(function () {
           window.location.href = "membership.html";
-        })  
+        });
 
         $("#logout").click(() => {
           window.location.href = "login.html";
-          sessionStorage.removeItem("loggedUser")
-        })
-      
+          sessionStorage.removeItem("loggedUser");
+        });
       });
-</script>
-</body>
+    </script>
+  </body>
 </html>

@@ -80,10 +80,7 @@
             success: (res) => {
               console.log(`success ${res}`);
               if (res.status === 201) {
-                sessionStorage.setItem(
-                  "registeredUser",
-                  JSON.stringify(res.data)
-                );
+                sessionStorage.setItem("loggedUser", JSON.stringify(res.data));
                 window.location.href = "Home.html";
                 alert("Register successfuly");
               }

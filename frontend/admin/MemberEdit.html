@@ -18,58 +18,34 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu" >
+              <div class="menu">
                 <div class="DashBoard" id="menu">
-                  <b
-                    ><a href="Home.html" style="text-decoration: none; color: black"
-                      ><p>Dashboard</p></a
-                    ></b
-                  >
+                  <b>Dashboard</b>
                 </div>
                 <div class="UserData" id="UserData">
-                  <b
-                    ><a href="member.html" style="text-decoration: none; color: black"
-                      ><p>Member</p></a
-                    ></b
-                  >
+                  <b>Member</b>
                 </div>
                 <div class="CashiersData" id="CashiersData">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Cashier Data</p></a
-                    ></b
-                  >
+                  <b>Cashier Data</b>
                 </div>
                 <div class="TransREport" id="TransREport">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Transacation Report</p></a
-                    ></b
-                  >
+                  <b>Transacation Report</b>
                 </div>
                 <div class="Member2" id="Member2">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Member Membership</p></a
-                    ></b
-                  >
+                  <b>Member Membership</b>
                 </div>
                 <div class="MemPlans" id="MemPlans">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Membership Plans</p></a
-                    ></b
-                  >
+                  <b>Membership Plans</b>
                 </div>
               </div>
             </div>
-             <div class="SH">
-                  <div class="menu2">
-                    <div id="logout" class="LogOut">
-                      <b>Log Out</b>
-                    </div>
+            <div class="SH">
+              <div class="menu2">
+                <div id="logout" class="LogOut">
+                  <b>Log Out</b>
                 </div>
               </div>
+            </div>
           </div>
 
           <!-- Main Dashboard -->
@@ -215,30 +191,29 @@
             },
           });
         });
-         $("#menu").click(function(){
+        $("#menu").click(function () {
           window.location.href = "home.html";
-        })
-        $("#UserData").click(function(){
+        });
+        $("#UserData").click(function () {
           window.location.href = "member.html";
-        })
-        $("#CashiersData").click(function(){
+        });
+        $("#CashiersData").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#TransREport").click(function(){
+        });
+        $("#TransREport").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#Member2").click(function(){
+        });
+        $("#Member2").click(function () {
           window.location.href = "MM.html";
-        })
-        $("#MemPlans").click(function(){
+        });
+        $("#MemPlans").click(function () {
           window.location.href = "membership.html";
-        })
+        });
 
         $("#logout").click(() => {
           window.location.href = "login.html";
-          sessionStorage.removeItem("loggedUser")
-        })
-
+          sessionStorage.removeItem("loggedUser");
+        });
       });
     </script>
   </body>
