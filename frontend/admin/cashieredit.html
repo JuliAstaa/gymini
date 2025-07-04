@@ -18,58 +18,34 @@
               <div class="logo">
                 <img src="../assets/logo.png" alt="" style="height: 200px" />
               </div>
-              <div class="menu" >
+              <div class="menu">
                 <div class="DashBoard" id="menu">
-                  <b
-                    ><a href="Home.html" style="text-decoration: none; color: black"
-                      ><p>Dashboard</p></a
-                    ></b
-                  >
+                  <b>Dashboard</b>
                 </div>
                 <div class="UserData" id="UserData">
-                  <b
-                    ><a href="member.html" style="text-decoration: none; color: black"
-                      ><p>Member</p></a
-                    ></b
-                  >
+                  <b>Member</b>
                 </div>
                 <div class="CashiersData" id="CashiersData">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Cashier Data</p></a
-                    ></b
-                  >
+                  <b>Cashier Data</b>
                 </div>
                 <div class="TransREport" id="TransREport">
-                  <b
-                    ><a href="Cashier.html" style="text-decoration: none; color: black"
-                      ><p>Transacation Report</p></a
-                    ></b
-                  >
+                  <b>Transacation Report</b>
                 </div>
                 <div class="Member2" id="Member2">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Member Membership</p></a
-                    ></b
-                  >
+                  <b>Member Membership</b>
                 </div>
                 <div class="MemPlans" id="MemPlans">
-                  <b
-                    ><a href="MM.html" style="text-decoration: none; color: black"
-                      ><p>Membership Plans</p></a
-                    ></b
-                  >
+                  <b>Membership Plans</b>
                 </div>
               </div>
             </div>
-             <div class="SH">
-                  <div class="menu2">
-                    <div id="logout" class="LogOut">
-                      <b>Log Out</b>
-                    </div>
+            <div class="SH">
+              <div class="menu2">
+                <div id="logout" class="LogOut">
+                  <b>Log Out</b>
                 </div>
               </div>
+            </div>
           </div>
 
           <!-- Main Dashboard -->
@@ -121,19 +97,19 @@
               >
                 <div class="card">
                   <form action="" id="editTITIT">
-                    <label >Kasir ID</label>
-                    <input type="text" readonly id="useID" name="user_id"/>
+                    <label>Kasir ID</label>
+                    <input type="text" readonly id="useID" name="user_id" />
 
-                    <label >Name</label>
-                    <input type="text" id="name" name="username"/>
+                    <label>Name</label>
+                    <input type="text" id="name" name="username" />
 
                     <label>Gmail</label>
                     <input type="email" id="email" name="email" />
 
-                    <label >New Password</label>
+                    <label>New Password</label>
                     <input type="text" id="pw" name="password" />
 
-                    <label  >Role</label>
+                    <label>Role</label>
                     <input type="text" id="role" name="role" />
 
                     <button class="edit-btn">Edit</button>
@@ -149,9 +125,9 @@
       <!-- Close SecCont -->
     </div>
     <!-- Close MainCont -->
-     <script>
-          $(document).ready(() => {
-          function LoadDatabyID() {
+    <script>
+      $(document).ready(() => {
+        function LoadDatabyID() {
           const params = new URLSearchParams(window.location.search);
           const id = params.get("id");
           console.log(id); // Output: 123
@@ -166,7 +142,7 @@
               $("#useID").val(data.user_id);
               $("#name").val(data.username);
               $("#email").val(data.email);
-         
+
               $("#role").val(data.role);
             },
           });
@@ -212,31 +188,30 @@
           });
         });
 
-         $("#menu").click(function(){
+        $("#menu").click(function () {
           window.location.href = "home.html";
-        })
-        $("#UserData").click(function(){
+        });
+        $("#UserData").click(function () {
           window.location.href = "member.html";
-        })
-        $("#CashiersData").click(function(){
+        });
+        $("#CashiersData").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#TransREport").click(function(){
+        });
+        $("#TransREport").click(function () {
           window.location.href = "Cashier.html";
-        })
-        $("#Member2").click(function(){
+        });
+        $("#Member2").click(function () {
           window.location.href = "MM.html";
-        })
-        $("#MemPlans").click(function(){
+        });
+        $("#MemPlans").click(function () {
           window.location.href = "membership.html";
-        })
+        });
 
         $("#logout").click(() => {
           window.location.href = "login.html";
-          sessionStorage.removeItem("loggedUser")
-        })
-        
+          sessionStorage.removeItem("loggedUser");
+        });
       });
-     </script>
+    </script>
   </body>
 </html>

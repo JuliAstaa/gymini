@@ -81,7 +81,7 @@
               console.log(`success ${res}`);
               if (res.status === 201) {
                 sessionStorage.setItem(
-                  "loggedUser",
+                  "registeredUser",
                   JSON.stringify(res.data)
                 );
                 window.location.href = "Home.html";
